@@ -15,6 +15,6 @@ Générer documentation technique
 
 AL :    -Connexion comptable
 
-EM :    -ajout comptable BDD
+EM :    -ajout comptable BDD ☺
         -Sommaire comptable
     
