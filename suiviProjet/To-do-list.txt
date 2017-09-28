@@ -11,9 +11,11 @@ Affichage comptable
 Gérer les modifications de la BDD            
 Chiffrer mdp
 Générer documentation technique
+Voir si on peut pas regrouper les sommaires
 
 
-AL :    -Connexion comptable
+AL :    -Connexion comptable //dans c_connexion si c'est un comptable renvoyer 
+        vers v_sommaireComptable.php
 
 EM :    -ajout comptable BDD ☺
         -Sommaire comptable
