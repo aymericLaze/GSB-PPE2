@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Jeu 28 Septembre 2017 à 15:56
--- Version du serveur :  10.1.19-MariaDB
--- Version de PHP :  7.0.9
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 28 sep. 2017 à 14:50
+-- Version du serveur :  5.7.19
+-- Version de PHP :  5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,13 +28,15 @@ SET time_zone = "+00:00";
 -- Structure de la table `etat`
 --
 
-CREATE TABLE `etat` (
+DROP TABLE IF EXISTS `etat`;
+CREATE TABLE IF NOT EXISTS `etat` (
   `id` char(2) NOT NULL,
-  `libelle` varchar(30) DEFAULT NULL
+  `libelle` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `etat`
+-- Déchargement des données de la table `etat`
 --
 
 INSERT INTO `etat` (`id`, `libelle`) VALUES
@@ -47,17 +51,20 @@ INSERT INTO `etat` (`id`, `libelle`) VALUES
 -- Structure de la table `fichefrais`
 --
 
-CREATE TABLE `fichefrais` (
+DROP TABLE IF EXISTS `fichefrais`;
+CREATE TABLE IF NOT EXISTS `fichefrais` (
   `idUtilisateur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `nbJustificatifs` int(11) DEFAULT NULL,
   `montantValide` decimal(10,2) DEFAULT NULL,
   `dateModif` date DEFAULT NULL,
-  `idEtat` char(2) DEFAULT 'CR'
+  `idEtat` char(2) DEFAULT 'CR',
+  PRIMARY KEY (`idUtilisateur`,`mois`),
+  KEY `idEtat` (`idEtat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `fichefrais`
+-- Déchargement des données de la table `fichefrais`
 --
 
 INSERT INTO `fichefrais` (`idUtilisateur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
@@ -245,7 +252,8 @@ INSERT INTO `fichefrais` (`idUtilisateur`, `mois`, `nbJustificatifs`, `montantVa
 ('a17', '201705', 9, '5482.60', '2017-07-03', 'RB'),
 ('a17', '201706', 5, '6410.79', '2017-08-03', 'RB'),
 ('a17', '201707', 7, '2504.10', '2017-08-07', 'VA'),
-('a17', '201708', 2, '0.00', '2017-08-03', 'CR'),
+('a17', '201708', 2, '0.00', '2017-09-28', 'CL'),
+('a17', '201709', 0, '0.00', '2017-09-28', 'CR'),
 ('a55', '201001', 11, '5394.51', '2010-03-05', 'RB'),
 ('a55', '201002', 0, '5077.61', '2010-04-02', 'RB'),
 ('a55', '201003', 3, '4905.37', '2010-05-05', 'RB'),
@@ -1032,9 +1040,9 @@ INSERT INTO `fichefrais` (`idUtilisateur`, `mois`, `nbJustificatifs`, `montantVa
 ('b4', '201312', 10, '5186.39', '2014-02-03', 'RB'),
 ('b4', '201401', 9, '6242.05', '2014-03-02', 'RB'),
 ('b4', '201402', 9, '6872.69', '2014-04-04', 'RB'),
-('b4', '201403', 1, '6787.33', '2014-05-01', 'RB'),
-('b4', '201404', 5, '5764.86', '2014-06-03', 'RB');
+('b4', '201403', 1, '6787.33', '2014-05-01', 'RB');
 INSERT INTO `fichefrais` (`idUtilisateur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
+('b4', '201404', 5, '5764.86', '2014-06-03', 'RB'),
 ('b4', '201405', 6, '6011.06', '2014-07-01', 'RB'),
 ('b4', '201406', 2, '3975.84', '2014-08-05', 'RB'),
 ('b4', '201407', 12, '5427.00', '2014-09-06', 'RB'),
@@ -2010,9 +2018,9 @@ INSERT INTO `fichefrais` (`idUtilisateur`, `mois`, `nbJustificatifs`, `montantVa
 ('e49', '201101', 2, '4581.60', '2011-03-03', 'RB'),
 ('e49', '201102', 6, '4378.58', '2011-04-04', 'RB'),
 ('e49', '201103', 0, '3737.60', '2011-05-06', 'RB'),
-('e49', '201104', 2, '3425.87', '2011-06-07', 'RB'),
-('e49', '201105', 7, '5134.40', '2011-07-04', 'RB');
+('e49', '201104', 2, '3425.87', '2011-06-07', 'RB');
 INSERT INTO `fichefrais` (`idUtilisateur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
+('e49', '201105', 7, '5134.40', '2011-07-04', 'RB'),
 ('e49', '201106', 7, '5057.71', '2011-08-04', 'RB'),
 ('e49', '201107', 9, '6260.08', '2011-09-06', 'RB'),
 ('e49', '201108', 6, '2674.28', '2011-10-03', 'RB'),
@@ -2555,14 +2563,16 @@ INSERT INTO `fichefrais` (`idUtilisateur`, `mois`, `nbJustificatifs`, `montantVa
 -- Structure de la table `fraisforfait`
 --
 
-CREATE TABLE `fraisforfait` (
+DROP TABLE IF EXISTS `fraisforfait`;
+CREATE TABLE IF NOT EXISTS `fraisforfait` (
   `id` char(3) NOT NULL,
   `libelle` char(20) DEFAULT NULL,
-  `montant` decimal(5,2) DEFAULT NULL
+  `montant` decimal(5,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `fraisforfait`
+-- Déchargement des données de la table `fraisforfait`
 --
 
 INSERT INTO `fraisforfait` (`id`, `libelle`, `montant`) VALUES
@@ -2577,15 +2587,18 @@ INSERT INTO `fraisforfait` (`id`, `libelle`, `montant`) VALUES
 -- Structure de la table `lignefraisforfait`
 --
 
-CREATE TABLE `lignefraisforfait` (
+DROP TABLE IF EXISTS `lignefraisforfait`;
+CREATE TABLE IF NOT EXISTS `lignefraisforfait` (
   `idUtilisateur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `idFraisForfait` char(3) NOT NULL,
-  `quantite` int(11) DEFAULT NULL
+  `quantite` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idUtilisateur`,`mois`,`idFraisForfait`),
+  KEY `idFraisForfait` (`idFraisForfait`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `lignefraisforfait`
+-- Déchargement des données de la table `lignefraisforfait`
 --
 
 INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
@@ -3329,6 +3342,10 @@ INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `qua
 ('a17', '201708', 'KM', 809),
 ('a17', '201708', 'NUI', 7),
 ('a17', '201708', 'REP', 15),
+('a17', '201709', 'ETP', 0),
+('a17', '201709', 'KM', 0),
+('a17', '201709', 'NUI', 0),
+('a17', '201709', 'REP', 0),
 ('a55', '201001', 'ETP', 2),
 ('a55', '201001', 'KM', 644),
 ('a55', '201001', 'NUI', 15),
@@ -4373,12 +4390,12 @@ INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `qua
 ('b13', '201605', 'KM', 890),
 ('b13', '201605', 'NUI', 6),
 ('b13', '201605', 'REP', 7),
-('b13', '201606', 'ETP', 13),
+('b13', '201606', 'ETP', 13);
+INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('b13', '201606', 'KM', 904),
 ('b13', '201606', 'NUI', 11),
 ('b13', '201606', 'REP', 4),
-('b13', '201607', 'ETP', 9);
-INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('b13', '201607', 'ETP', 9),
 ('b13', '201607', 'KM', 994),
 ('b13', '201607', 'NUI', 11),
 ('b13', '201607', 'REP', 6),
@@ -6175,12 +6192,12 @@ INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `qua
 ('b34', '201507', 'NUI', 17),
 ('b34', '201507', 'REP', 17),
 ('b34', '201508', 'ETP', 14),
-('b34', '201508', 'KM', 383),
+('b34', '201508', 'KM', 383);
+INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('b34', '201508', 'NUI', 20),
 ('b34', '201508', 'REP', 8),
 ('b34', '201509', 'ETP', 15),
-('b34', '201509', 'KM', 725);
-INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('b34', '201509', 'KM', 725),
 ('b34', '201509', 'NUI', 14),
 ('b34', '201509', 'REP', 10),
 ('b34', '201510', 'ETP', 3),
@@ -8001,13 +8018,13 @@ INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `qua
 ('c3', '201503', 'REP', 20),
 ('c3', '201504', 'ETP', 3),
 ('c3', '201504', 'KM', 972),
-('c3', '201504', 'NUI', 9),
+('c3', '201504', 'NUI', 9);
+INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('c3', '201504', 'REP', 4),
 ('c3', '201505', 'ETP', 20),
 ('c3', '201505', 'KM', 876),
 ('c3', '201505', 'NUI', 5),
-('c3', '201505', 'REP', 3);
-INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('c3', '201505', 'REP', 3),
 ('c3', '201506', 'ETP', 20),
 ('c3', '201506', 'KM', 958),
 ('c3', '201506', 'NUI', 3),
@@ -9808,12 +9825,12 @@ INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `qua
 ('e24', '201407', 'KM', 694),
 ('e24', '201407', 'NUI', 11),
 ('e24', '201407', 'REP', 17),
-('e24', '201408', 'ETP', 10),
+('e24', '201408', 'ETP', 10);
+INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('e24', '201408', 'KM', 695),
 ('e24', '201408', 'NUI', 10),
 ('e24', '201408', 'REP', 19),
-('e24', '201409', 'ETP', 8);
-INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('e24', '201409', 'ETP', 8),
 ('e24', '201409', 'KM', 839),
 ('e24', '201409', 'NUI', 9),
 ('e24', '201409', 'REP', 4),
@@ -11624,12 +11641,12 @@ INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `qua
 ('f21', '201401', 'ETP', 14),
 ('f21', '201401', 'KM', 872),
 ('f21', '201401', 'NUI', 19),
-('f21', '201401', 'REP', 7),
+('f21', '201401', 'REP', 7);
+INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('f21', '201402', 'ETP', 9),
 ('f21', '201402', 'KM', 810),
 ('f21', '201402', 'NUI', 9),
-('f21', '201402', 'REP', 8);
-INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('f21', '201402', 'REP', 8),
 ('f21', '201403', 'ETP', 12),
 ('f21', '201403', 'KM', 707),
 ('f21', '201403', 'NUI', 17),
@@ -12541,17 +12558,20 @@ INSERT INTO `lignefraisforfait` (`idUtilisateur`, `mois`, `idFraisForfait`, `qua
 -- Structure de la table `lignefraishorsforfait`
 --
 
-CREATE TABLE `lignefraishorsforfait` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `lignefraishorsforfait`;
+CREATE TABLE IF NOT EXISTS `lignefraishorsforfait` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `idUtilisateur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `libelle` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `montant` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `montant` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idVisiteur` (`idUtilisateur`,`mois`)
+) ENGINE=InnoDB AUTO_INCREMENT=31122 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `lignefraishorsforfait`
+-- Déchargement des données de la table `lignefraishorsforfait`
 --
 
 INSERT INTO `lignefraishorsforfait` (`id`, `idUtilisateur`, `mois`, `libelle`, `date`, `montant`) VALUES
@@ -43729,7 +43749,8 @@ INSERT INTO `lignefraishorsforfait` (`id`, `idUtilisateur`, `mois`, `libelle`, `
 -- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `utilisateur` (
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` char(4) NOT NULL,
   `nom` char(30) DEFAULT NULL,
   `prenom` char(30) DEFAULT NULL,
@@ -43739,11 +43760,12 @@ CREATE TABLE `utilisateur` (
   `cp` char(5) DEFAULT NULL,
   `ville` char(30) DEFAULT NULL,
   `dateEmbauche` date DEFAULT NULL,
-  `fonction` varchar(30) DEFAULT NULL
+  `fonction` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `utilisateur`
+-- Déchargement des données de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`, `fonction`) VALUES
@@ -43763,6 +43785,16 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp
 ('c14', 'Daburon', 'François', 'fdaburon', '7oqpv', '13 rue de Chanzy', '94000', 'Créteil', '2002-02-11', 'visiteur'),
 ('c3', 'De', 'Philippe', 'pde', 'gk9kx', '13 rue Barthes', '94000', 'Créteil', '2010-12-14', 'visiteur'),
 ('c54', 'Debelle', 'Michel', 'mdebelle', 'od5rt', '181 avenue Barbusse', '93210', 'Rosny', '2006-11-23', 'visiteur'),
+('co1', 'Brees', 'Drew', 'dbrees', 'eofjz', '2 rue des prés', '94230', 'Cachan', '2006-10-28', 'comptable'),
+('co10', 'Wayne', 'Bruce', 'bwayne', 'imbat', '1 rue du théâtre', '46000', 'Cahors', '2001-05-22', 'comptable'),
+('co2', 'Brady', 'Tom', 'tbrady', 'dajfh', '6 allée du bois', '94400', 'Vitry', '2003-06-28', 'comptable'),
+('co3', 'Newton', 'Cam', 'cnewton', 'oihkl', '18 avenue de la loose', '75004', 'Paris', '2011-08-21', 'comptable'),
+('co4', 'Smith', 'Alex', 'asmith', 'cjdur', '27 rue de la gare', '94230', 'Cachan', '2005-03-28', 'comptable'),
+('co5', 'Wentz', 'Carson', 'cwentz', 'apzoe', '25 boulevard de la liberté', '83330', 'La Crau', '2013-10-10', 'comptable'),
+('co6', 'Watt', 'JJ', 'jwatt', 'yutir', '30 rue du texas', '75016', 'Paris', '2000-03-28', 'comptable'),
+('co7', 'Manning', 'Peyton', 'pmanning', 'ieizo', '26 avenue Neil Armstrong', '94230', 'Cachan', '2006-10-28', 'comptable'),
+('co8', 'Escobar', 'Pablo', 'pescobar', 'cocan', '20 chemin des fleurs', '75006', 'Paris', '2013-05-22', 'comptable'),
+('co9', 'Norman', 'Josh', 'jnorman', 'oapfj', '2 allée du random', '46000', 'Cahors', '2002-09-22', 'comptable'),
 ('d13', 'Debelle', 'Jeanne', 'jdebelle', 'nvwqq', '134 allée des Joncs', '44000', 'Nantes', '2000-05-11', 'visiteur'),
 ('d51', 'Debroise', 'Michel', 'mdebroise', 'sghkb', '2 Bld Jourdain', '44000', 'Nantes', '2001-04-17', 'visiteur'),
 ('e22', 'Desmarquest', 'Nathalie', 'ndesmarquest', 'f1fob', '14 Place d Arc', '45000', 'Orléans', '2005-11-12', 'visiteur'),
@@ -43776,59 +43808,7 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp
 ('f4', 'Gest', 'Alain', 'agest', 'dywvt', '30 avenue de la mer', '13025', 'Berre', '1985-11-01', 'visiteur');
 
 --
--- Index pour les tables exportées
---
-
---
--- Index pour la table `etat`
---
-ALTER TABLE `etat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `fichefrais`
---
-ALTER TABLE `fichefrais`
-  ADD PRIMARY KEY (`idUtilisateur`,`mois`),
-  ADD KEY `idEtat` (`idEtat`);
-
---
--- Index pour la table `fraisforfait`
---
-ALTER TABLE `fraisforfait`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `lignefraisforfait`
---
-ALTER TABLE `lignefraisforfait`
-  ADD PRIMARY KEY (`idUtilisateur`,`mois`,`idFraisForfait`),
-  ADD KEY `idFraisForfait` (`idFraisForfait`);
-
---
--- Index pour la table `lignefraishorsforfait`
---
-ALTER TABLE `lignefraishorsforfait`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idVisiteur` (`idUtilisateur`,`mois`);
-
---
--- Index pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `lignefraishorsforfait`
---
-ALTER TABLE `lignefraishorsforfait`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31122;
---
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -43850,6 +43830,7 @@ ALTER TABLE `lignefraisforfait`
 --
 ALTER TABLE `lignefraishorsforfait`
   ADD CONSTRAINT `lignefraishorsforfait_ibfk_1` FOREIGN KEY (`idUtilisateur`,`mois`) REFERENCES `fichefrais` (`idUtilisateur`, `mois`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
