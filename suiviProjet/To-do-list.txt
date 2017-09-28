@@ -3,7 +3,7 @@ Connexion d'un comptable
     reconnaissance d'un comptable
 Affichage comptable
     affichage liste mois/année où il y a des fiches de frais
-        affichage liste visiteurs avec fiches de frais sur ce mois/année
+        affvichage liste visiteurs avec fiches de frais sur ce mois/année
             affichage détails fiche pour visiteur sélectionné
                 ajouter la possibilité de modifier les frais (forfait)
                 ajouter le refus d'un frais hors forfait
@@ -11,3 +11,10 @@ Affichage comptable
 Gérer les modifications de la BDD            
 Chiffrer mdp
 Générer documentation technique
+
+
+AL :    -Connexion comptable
+
+EM :    -ajout comptable BDD
+        -Sommaire comptable
+    
