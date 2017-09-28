@@ -21,8 +21,17 @@ switch($action){
 			$id = $visiteur['id'];
 			$nom =  $visiteur['nom'];
 			$prenom = $visiteur['prenom'];
-			connecter($id,$nom,$prenom);
-			include("vues/v_sommaire.php");
+                        $fonction = $visiteur['fonction'];
+			connecter($id,$nom,$prenom,$fonction);
+                        
+                        if($_SESSION['fonction'] === 'visiteur')
+                        {
+                            include("vues/v_sommaire.php");
+                        }
+                        else
+                        {
+                            include("vues/v_sommaireComptable.php");
+                        }
 		}
 		break;
 	}
