@@ -6,7 +6,9 @@ $numMois =substr( $mois,4,2);
 $action = $_REQUEST['action'];
 switch($action){
     case 'choisirMois':
-        
+        echo "vue pour choisir le mois";
+        break;
+    
 }
 
 /* 
