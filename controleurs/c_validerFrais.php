@@ -6,8 +6,8 @@ $numMois =substr( $mois,4,2);
 $action = $_REQUEST['action'];
 switch($action){
     case 'choisirMois':
-        echo "vue pour choisir le mois<br />";
-        print_r($pdo->getLesMoisEnAttente());
+        $lesMois=$pdo->getLesMoisEnAttente();
+        include 'vues/v_listeMoisComptable.php';
         break;
     
 }
