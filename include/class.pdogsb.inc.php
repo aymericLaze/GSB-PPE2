@@ -297,5 +297,21 @@ class PdoGsb{
 		where fichefrais.idUtilisateur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		PdoGsb::$monPdo->exec($req);
 	}
+        
+        
+/**
+ * Retourne les mois ayant le statut en attente de validation (CL)
+ * 
+ */
+        
+        public function getLesMoisEnAttente(){
+            $req = "select fichefrais.mois as mois"
+                    . " from fichefrais"
+                    . " where fichefrais.idEtat = 'CL'"
+                    . " order by fichefrais.mois DESC ";
+            $res = PdoGsb::$monPdo->query($req);
+            $laLigne = $res->fetch();
+            return $laLigne;
+        }
 }
 ?>
