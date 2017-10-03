@@ -18,5 +18,6 @@ AL :    -Connexion comptable //dans c_connexion si c'est un comptable renvoyer
         vers v_sommaireComptable.php
 
 EM :    -ajout comptable BDD ☺
-        -Sommaire comptable
+        -Sommaire comptable ☺
+        -création vue v_listeMoisComptable
     
