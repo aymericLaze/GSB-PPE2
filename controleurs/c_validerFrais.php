@@ -39,7 +39,7 @@ switch ($action) {
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
         
-        include 'vues/validation.php';
+        include 'vues/v_validation.php';
         break;
 }
 
