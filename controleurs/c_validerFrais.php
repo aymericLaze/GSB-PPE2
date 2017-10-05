@@ -28,9 +28,9 @@ switch ($action) {
         include 'vues/v_listeVisiteur.php';
 
         $leVisiteur = $_REQUEST['lstVisiteur'];
-        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
-        $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
-        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
+        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
+        $lesFraisForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
+        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
         $numAnnee = substr($leMois, 0, 4);
         $numMois = substr($leMois, 4, 2);
         $libEtat = $lesInfosFicheFrais['libEtat'];

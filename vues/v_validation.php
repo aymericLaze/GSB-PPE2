@@ -1,7 +1,7 @@
-<h3>Fiche de frais de <?php echo $nomUtilisateur." "; echo $prenomUtilisateur." " ?> du mois <?php echo $numMois."-".$numAnnee?> : </h3>
+<h3>Fiche de frais de <?php //echo $nomUtilisateur." "; echo $prenomUtilisateur." " ?> du mois <?php echo $numMois."-".$numAnnee?> : </h3>
     <div class="encadre">
     <p>
-        Etat : <?php echo $libEtat?> depuis le <?php echo $dateModif?> <br>
+        Etat : <?php echo $libEtat ?> depuis le <?php echo $dateModif?> <br>
     </p>
   	<table class="listeLegere">
   	   <caption>Eléments forfaitisés </caption>
@@ -36,8 +36,8 @@
                 <th class="date">Date</th>
                 <th class="libelle">Libellé</th>
                 <th class='montant'>Montant</th>
-                <th>Reporter frais</th> //ajout possibiliter de reporter
-                <th>Supprimer frais</th> //ajout possibiliter de supprimer
+                <th>Reporter frais</th> <!-- ajout possibiliter de reporter -->
+                <th>Supprimer frais</th> <!-- ajout possibiliter de supprimer -->
              </tr>
         <?php      
           foreach ( $lesFraisHorsForfait as $unFraisHorsForfait ) 
