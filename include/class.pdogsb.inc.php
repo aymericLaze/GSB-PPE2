@@ -328,7 +328,7 @@ class PdoGsb{
         public function getLesVisiteursAValider($unMois){
             $req="select id,nom,prenom "
                  ."from utilisateur join fichefrais on fichefrais.idUtilisateur=utilisateur.id "
-                 ."where mois=".$unMois;
+                 ."where mois=".$unMois." and fichefrais.idEtat = 'CL'";
             $res = PdoGsb::$monPdo->query($req);
                $lesVisiteurs=array();
                $laLigne = $res->fetch();
