@@ -19,5 +19,6 @@ AL :    -Connexion comptable //dans c_connexion si c'est un comptable renvoyer
 
 EM :    -ajout comptable BDD ☺
         -Sommaire comptable ☺
-        -création vue v_listeMoisComptable
+        -création vue v_listeMoisComptable ☺
+        -
     

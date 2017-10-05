@@ -325,6 +325,27 @@ class PdoGsb{
 		}
 		return $lesMois;
 	}
+        public function getLesVisiteursAValider($unMois){
+            $req="select id,nom,prenom "
+                 ."from utilisateur join fichefrais on fichefrais.idUtilisateur=utilisateur.id "
+                 ."where mois=".$unMois;
+            $res = PdoGsb::$monPdo->query($req);
+               $lesVisiteurs=array();
+               $laLigne = $res->fetch();
+		while($laLigne != null)	{
+			$idVisiteur = $laLigne['id'];
+			$nom =$laLigne["nom"];
+			$prenom=$laLigne["prenom"];
+			$lesVisiteurs["$idVisiteur"]=array(
+		     "idVisiteur"=>"$idVisiteur",
+		    "nom"  => "$nom",
+			"prenom"  => "$prenom"
+             );
+			$laLigne = $res->fetch(); 		
+		}
+		return $lesVisiteurs;
+                    
         }
-
+        }
+        
 ?>
