@@ -51,17 +51,9 @@
                 <td><?php echo $libelle ?></td>
                 <td><?php echo $montant ?></td>
                 <!-- ajout du lien de report -->
-                <td><a href="index.php?uc=validerFrais
-                                      &action=reporter
-                                      &idFraisHorsForfait=<?php echo $unFraisForfait['id'] ?>
-                                      &idVisiteur=<?php echo $idVisiteur ?>
-                                      &mois=<?php echo $mois ?>">Reporter</a></td>
+                <td><a href="index.php?uc=validerFrais&action=reporter&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $leVisiteur ?>&mois=<?php echo $leMois ?>">Reporter</a></td>
                 <!-- ajout du lien de suppression -->
-                <td><a href="index.php?uc=validerFrais
-                                      &action=supprimer
-                                      &idFraisHorsForfait=<?php echo $unFraisForfait['id'] ?>
-                                      &idVisiteur=<?php echo $idVisiteur ?>
-                                      &mois=<?php echo $mois ?>">Supprimer</a></td>
+                <td><a href="index.php?uc=validerFrais&action=supprimer&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $leVisiteur ?>&mois=<?php echo $leMois ?>">Supprimer</a></td>
              </tr>
         <?php 
           }
