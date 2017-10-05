@@ -14,16 +14,32 @@ switch ($action) {
         $leMois = $_REQUEST['lstMois'];
         $lesMois = $pdo->getLesMoisEnAttente();
         include("vues/v_listeMoisComptable.php");
-         $moisASelectionner = $leMois;
-        $lesVisiteurs=$pdo->getLesVisiteursAValider($leMois);
+        $lesVisiteurs = $pdo->getLesVisiteursAValider($leMois);
         include 'vues/v_listeVisiteur.php';
         break;
+    case 'voirFicheFrais':
+        $leMois = $_REQUEST["mois"];
+        $lesMois = $pdo->getLesMoisEnAttente();
         
-}
+        include("vues/v_listeMoisComptable.php");
+        
+        $lesVisiteurs = $pdo->getLesVisiteursAValider($leMois);
+        
+        include 'vues/v_listeVisiteur.php';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+        $leVisiteur = $_REQUEST['lstVisiteur'];
+        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
+        $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
+        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
+        $numAnnee = substr($leMois, 0, 4);
+        $numMois = substr($leMois, 4, 2);
+        $libEtat = $lesInfosFicheFrais['libEtat'];
+        $montantValide = $lesInfosFicheFrais['montantValide'];
+        $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
+        $dateModif = $lesInfosFicheFrais['dateModif'];
+        $dateModif = dateAnglaisVersFrancais($dateModif);
+        
+        include 'vues/validation.php';
+        break;
+}
 
