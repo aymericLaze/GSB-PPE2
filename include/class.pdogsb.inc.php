@@ -310,8 +310,21 @@ class PdoGsb{
                     . " where fichefrais.idEtat = 'CL'"
                     . " order by fichefrais.mois DESC ";
             $res = PdoGsb::$monPdo->query($req);
-            $laLigne = $res->fetch();
-            return $laLigne;
+		$lesMois =array();
+		$laLigne = $res->fetch();
+		while($laLigne != null)	{
+			$mois = $laLigne['mois'];
+			$numAnnee =substr( $mois,0,4);
+			$numMois =substr( $mois,4,2);
+			$lesMois["$mois"]=array(
+		     "mois"=>"$mois",
+		    "numAnnee"  => "$numAnnee",
+			"numMois"  => "$numMois"
+             );
+			$laLigne = $res->fetch(); 		
+		}
+		return $lesMois;
+	}
         }
-}
+
 ?>

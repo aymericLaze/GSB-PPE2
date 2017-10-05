@@ -9,6 +9,8 @@ switch($action){
         $lesMois=$pdo->getLesMoisEnAttente();
         include 'vues/v_listeMoisComptable.php';
         break;
+    case 'voirVisiteurFras':
+        
     
 }
 
