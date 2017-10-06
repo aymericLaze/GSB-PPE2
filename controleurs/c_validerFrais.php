@@ -56,5 +56,35 @@ switch ($action) {
         
         include 'vues/v_validation.php';
         break;
+    
+    //afficahge modification des frais forfait
+    case 'modifier':
+        
+        //recuperation leMois et leVisiteur
+        $moisASelectionner = $_REQUEST["mois"];
+        $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        
+        //affichage de la liste de frais forfait
+        $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
+
+        include 'vues/v_modificationFraisForfait.php';
+        break;
+    
+    //modifie les quantites de frais forfait et retourne sur l'affichage des fiches
+    case 'appliquerModification':
+        
+        //recuperation des variables post
+        $moisASelectionner = $_REQUEST['leMois'];
+        $visiteurASelectionner = $_REQUEST['leVisiteur'];
+        $lesFrais = $_REQUEST['lesFrais'];
+        
+        //verification de valeur valide puis ajout
+        if(lesQteFraisValides($lesFrais)){
+            $pdo->majFraisForfait($visiteurASelectionner,$moisASelectionner,$lesFrais);
+        }
+        
+        //redirection
+        header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
+        break;
 }
 
