@@ -325,6 +325,10 @@ class PdoGsb{
 		}
 		return $lesMois;
 	}
+        
+        
+        
+        //creer de la doc
         public function getLesVisiteursAValider($unMois){
             $req="select id,nom,prenom "
                  ."from utilisateur join fichefrais on fichefrais.idUtilisateur=utilisateur.id "
@@ -346,6 +350,12 @@ class PdoGsb{
 		return $lesVisiteurs;
                     
         }
+        
+        
+        
+        
+        
+        //creer de la doc
         public function refuserFraisHorsForfait($idFraisHorsForfait){
             $req="update lignefraishorsforfait"
                     ." set libelle=concat('[REFUSE]' ,(select * from lignefraishorsforfait as L where id=".$idFraisHorsForfait."))"
