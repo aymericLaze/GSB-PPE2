@@ -1,9 +1,9 @@
 <?php
 
 include("vues/v_sommaireComptable.php");
-$mois = getMois(date("d/m/Y"));
-$numAnnee = substr($mois, 0, 4);
-$numMois = substr($mois, 4, 2);
+/*$mois = getMois(date("d/m/Y"));
+$numAnnee = substr($mois, 0, 4);    A SUPPRIMER (CONFIRMER AVEC Eugene)
+$numMois = substr($mois, 4, 2);*/
 $action = $_REQUEST['action'];
 switch ($action) {
     //choisir mois
@@ -17,7 +17,6 @@ switch ($action) {
     case 'voirVisiteurFrais':
         //recuperation leMois
         $moisASelectionner = $_REQUEST['lstMois'];
-        echo $moisASelectionner;
         
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
@@ -70,7 +69,7 @@ switch ($action) {
         include 'vues/v_modificationFraisForfait.php';
         break;
     
-    //modifie les quantites de frais forfait et retourne sur l'affichage des fiches
+    //modifie les quantites de frais forfait et retourne sur l'affichage des fiches NOUVEAU CONTROLEUR
     case 'appliquerModification':
         
         //recuperation des variables post
@@ -86,5 +85,31 @@ switch ($action) {
         //redirection
         header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
         break;
+        
+    //reporte le frais hors forfait au mois suivant
+    case 'report':
+        
+        //recuperation des variables post
+        $idFraisHorsForfait = $_REQUEST['idFraisHorsForfait'];
+        $moisASelectionner = $_REQUEST['mois'];
+        $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        
+        //recuperation date du dernier mois saisi
+        $dernierMois = dernierMoisSaisi($visiteurASelectionner);
+        
+        //verification que le frais est dans le dernier mois de saisi
+        if($moisASelectionner == $dernierMois)
+        {
+            $dernierMois = incrementerMois($moisASelectionner);
+            creeNouvellesLignesFrais($visiteurASelectionner, $dernierMois);
+            reportDuFraisHorsForfait($idFraisHorsForfait,$dernierMois);
+        }
+        else
+        {
+            reportDuFraisHorsForfait($idFraisHorsForfait,$dernierMois);
+        }
+        
+        //redirection
+        header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
 }
 
