@@ -370,12 +370,13 @@ class PdoGsb{
  * @param str $idFrais identifiant du mois à mettre à jour
  * @param str $dernierMois mois auquel doit être le frais hors forfait
  */
-        function reportDuFraisHorsForfait($idFrais, $dernierMois)
+        function reportDUnFraisHorsForfait($idFrais, $dernierMois)
         {
             //requete pour mettre a jour le champs
             $req = "update lignefraishorsforfait"
-                    . "set mois = $dernierMois"
-                    . "where id = $idFrais";
+                    . " set mois = $dernierMois"
+                    . " where id = $idFrais";
+
             //execution de la requete
             PdoGsb::$monPdo->exec($req);
         }
