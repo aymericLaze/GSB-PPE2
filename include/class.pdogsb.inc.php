@@ -361,7 +361,24 @@ class PdoGsb{
                     ." set libelle=concat('[REFUSE]' ,(select * from lignefraishorsforfait as L where id=".$idFraisHorsForfait."))"
                     ." where id=".$idFraisHorsForfait;
         }
-       
+
+/**
+ * @author Aymeric Laze
+ * 
+ * Reporte le frais hors forfait au mois de la derniere fiche de frais
+ * 
+ * @param str $idFrais identifiant du mois à mettre à jour
+ * @param str $dernierMois mois auquel doit être le frais hors forfait
+ */
+        function reportDuFraisHorsForfait($idFrais, $dernierMois)
+        {
+            //requete pour mettre a jour le champs
+            $req = "update lignefraishorsforfait"
+                    . "set mois = $dernierMois"
+                    . "where id = $idFrais";
+            //execution de la requete
+            PdoGsb::$monPdo->exec($req);
         }
-        
+}
+       
 ?>
