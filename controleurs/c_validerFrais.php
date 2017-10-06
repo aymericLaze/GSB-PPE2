@@ -20,7 +20,6 @@ switch ($action) {
     case 'voirFicheFrais':
         $leMois = $_REQUEST["mois"];
         $lesMois = $pdo->getLesMoisEnAttente();
-        
         include("vues/v_listeMoisComptable.php");
         
         $lesVisiteurs = $pdo->getLesVisiteursAValider($leMois);

@@ -346,6 +346,12 @@ class PdoGsb{
 		return $lesVisiteurs;
                     
         }
+        public function refuserFraisHorsForfait($idFraisHorsForfait){
+            $req="update lignefraishorsforfait"
+                    ." set libelle=concat('[REFUSE]' ,(select * from lignefraishorsforfait as L where id=".$idFraisHorsForfait."))"
+                    ." where id=".$idFraisHorsForfait;
+        }
+       
         }
         
 ?>
