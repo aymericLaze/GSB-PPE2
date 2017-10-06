@@ -6,27 +6,42 @@ $numAnnee = substr($mois, 0, 4);
 $numMois = substr($mois, 4, 2);
 $action = $_REQUEST['action'];
 switch ($action) {
+    //choisir mois
     case 'choisirMois':
+        //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
         include 'vues/v_listeMoisComptable.php';
         break;
+    
+    //choisir visiteur (affichage select mois)
     case 'voirVisiteurFrais':
-        $leMois = $_REQUEST['lstMois'];
+        //recuperation leMois
+        $moisASelectionner = $_REQUEST['lstMois'];
+        
+        //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
         include("vues/v_listeMoisComptable.php");
+        
+        //affichage selection de l'utilisateur
         $lesVisiteurs = $pdo->getLesVisiteursAValider($leMois);
         include 'vues/v_listeVisiteur.php';
         break;
+    
+    //affichage fiche de frais (affichage select mois/visiteur)
     case 'voirFicheFrais':
-        $leMois = $_REQUEST["mois"];
+        //recuperation leMois et leVisiteur
+        $moisASelectionner = $_REQUEST["mois"];
+        $visiteurASelectionner = $_REQUEST['lstVisiteur'];
+        
+        //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
         include("vues/v_listeMoisComptable.php");
         
-        $lesVisiteurs = $pdo->getLesVisiteursAValider($leMois);
-        
+        //affichage selection du visiteur
+        $lesVisiteurs = $pdo->getLesVisiteursAValider($moisASelectionner);
         include 'vues/v_listeVisiteur.php';
 
-        $leVisiteur = $_REQUEST['lstVisiteur'];
+        
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
         $lesFraisForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
         $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
