@@ -55,7 +55,7 @@
                 <!-- ajout du lien de report -->
                 <td><a href="index.php?uc=validerFrais&action=reporter&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Reporter</a></td>
                 <!-- ajout du lien de suppression -->
-                <td><a href="index.php?uc=validerFrais&action=supprimer&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Supprimer</a></td>
+                <td><a href="index.php?uc=validerFrais&action=supprimer&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Refuser</a></td>
              </tr>
         <?php 
           }
