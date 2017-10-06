@@ -67,6 +67,7 @@
                 
                 <!-- formulaire pour recuperer les informations sur le forfait hors frais -->
                 <form action="index.php?uc=validerFrais&action=reporter" method="post">
+                    <input type="hidden" name="idFraisHorsForfait" value="<?php echo $idFrais ?>" />
                     <input type="hidden" name="idVisiteur" value="<?php echo $visiteurASelectionner ?>" />
                     <input type="hidden" name="mois" value="<?php echo $moisASelectionner ?>" />
                     <td><input type="submit" value="Reporter" /></td>
