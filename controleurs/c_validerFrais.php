@@ -17,6 +17,7 @@ switch ($action) {
     case 'voirVisiteurFrais':
         //recuperation leMois
         $moisASelectionner = $_REQUEST['lstMois'];
+        echo $moisASelectionner;
         
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();

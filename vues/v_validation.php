@@ -16,6 +16,7 @@
             }
             ?>
 	</tr>
+        <!-- lien pour modification des elements -->
         
         <tr>
         <?php
@@ -29,6 +30,7 @@
 		?>
 		</tr>
     </table>
+        <a href="index.php?uc=validerFrais&action=modifier&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Modifier</a>
   	<table class="listeLegere">
   	   <caption>Descriptif des éléments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reçus -
        </caption>
@@ -51,9 +53,9 @@
                 <td><?php echo $libelle ?></td>
                 <td><?php echo $montant ?></td>
                 <!-- ajout du lien de report -->
-                <td><a href="index.php?uc=validerFrais&action=reporter&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $leVisiteur ?>&mois=<?php echo $leMois ?>">Reporter</a></td>
+                <td><a href="index.php?uc=validerFrais&action=reporter&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Reporter</a></td>
                 <!-- ajout du lien de suppression -->
-                <td><a href="index.php?uc=validerFrais&action=supprimer&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $leVisiteur ?>&mois=<?php echo $leMois ?>">Supprimer</a></td>
+                <td><a href="index.php?uc=validerFrais&action=supprimer&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Supprimer</a></td>
              </tr>
         <?php 
           }

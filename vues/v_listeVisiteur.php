@@ -1,6 +1,6 @@
 <h3>Visiteur à sélectionner : </h3>
     <form action="index.php?uc=validerFrais&action=voirFicheFrais" method="post">
-        <input type="hidden" name="mois" value="<?php echo $leMois ?>" />
+        <input type="hidden" name="mois" value="<?php echo $moisASelectionner ?>" />
         <div class="corpsForm">
 
             <p>
