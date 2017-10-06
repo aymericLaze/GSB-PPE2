@@ -33,8 +33,12 @@
             </tr>
         </table>
     
-        <!-- lien pour modification des elements -->
-        <a href="index.php?uc=validerFrais&action=modifier&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Modifier</a>
+        <!-- formulaire pour modification des elements -->
+        <form action="index.php?uc=validerFrais&action=modifier" method="post">
+            <input type="hidden" name="idVisiteur" value="<?php echo $visiteurASelectionner ?>" />
+            <input type="hidden" name="mois" value="<?php echo $moisASelectionner ?>" />
+            <input type="submit" value="Modifier" />
+        </form>
         
         <!-- tableau des frais hors forfait -->
   	<table class="listeLegere">
