@@ -40,6 +40,7 @@
             <input type="submit" value="Modifier" />
         </form>
         
+        
         <!-- tableau des frais hors forfait -->
   	<table class="listeLegere">
             <caption>Descriptif des éléments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reçus -</caption>
@@ -53,18 +54,32 @@
         <?php      
             foreach ( $lesFraisHorsForfait as $unFraisHorsForfait ) 
             {
+                    $idFrais = $unFraisHorsForfait['id'];
                     $date = $unFraisHorsForfait['date'];
                     $libelle = $unFraisHorsForfait['libelle'];
                     $montant = $unFraisHorsForfait['montant'];
         ?>
+            <!-- formulaire pour recuperer les informations sur le forfait hors frais -->
             <tr>
                 <td><?php echo $date ?></td>
                 <td><?php echo $libelle ?></td>
                 <td><?php echo $montant ?></td>
-                <!-- ajout du lien de report -->
-                <td><a href="index.php?uc=validerFrais&action=reporter&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>">Reporter</a></td>
-                <!-- ajout du lien de suppression -->
-                <td><a href="index.php?uc=validerFrais&action=supprimer&idFraisHorsForfait=<?php echo $unFraisHorsForfait['id'] ?>&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Refuser</a></td>
+                
+                <!-- formulaire pour recuperer les informations sur le forfait hors frais -->
+                <form action="index.php?uc=validerFrais&action=reporter" method="post">
+                    <input type="hidden" name="idVisiteur" value="<?php echo $visiteurASelectionner ?>" />
+                    <input type="hidden" name="mois" value="<?php echo $moisASelectionner ?>" />
+                    <td><input type="submit" value="Reporter" /></td>
+                </form>
+
+                <!-- formulaire pour recuperer les informations sur le forfait hors frais -->
+                <form action="index.php?uc=validerFrais&action=supprimer" method="post">
+                    <input type="hidden" name="idFraisHorsForfait" value="<?php echo $idFrais ?>" />
+                    <input type="hidden" name="idVisiteur" value="<?php echo $visiteurASelectionner ?>" />
+                    <input type="hidden" name="mois" value="<?php echo $moisASelectionner ?>" />
+                    <td><input type="submit" value="Refuser" /></td>
+                </form>
+                <td><a href="index.php?uc=validerFrais&action=supprimer&idFraisHorsForfait=<?php echo $idFrais ?>&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Refuser</a></td>
             </tr>
         <?php 
             }
