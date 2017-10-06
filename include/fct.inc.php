@@ -200,4 +200,38 @@ function nbErreurs(){
 	   return count($_REQUEST['erreurs']);
 	}
 }
+
+/**
+ * @author Aymeric Laze
+ * 
+ * Retourne le mois augmente d'un sous la forme aaaamm
+ * 
+ * @param str $mois sous forme aaaamm
+ * @return str $nouveauMois sous la forme aaaamm augmenté d'un, l'annee peut augmenter en consequence
+ */
+function incrementerMois($mois)
+{    
+    //scindage et transtypage de $mois 
+    $numAnnee = (int) substr($mois, 0, 4);
+    $numMois = (int) substr($mois, 4, 2);
+    
+    //test si passage d'annee ou si nescessaire d'ajouter un 0
+    if($numMois == 12)
+    {
+        $numAnnee++;
+        $nouveauMois = $numAnnee."01";
+    }
+    else if($numMois < 9)
+    {
+        $numMois++;
+        $nouveauMois = $numAnnee."0".$numMois;
+    }
+    else
+    {
+        $numMois++;
+        $nouveauMois = $numAnnee."".$numMois;
+    }
+    
+    return $nouveauMois;
+}
 ?>
