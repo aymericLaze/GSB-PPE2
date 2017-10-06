@@ -95,23 +95,22 @@ switch ($action) {
         $visiteurASelectionner = $_REQUEST['idVisiteur'];
         
         //recuperation date du dernier mois saisi
-        $dernierMois = dernierMoisSaisi($visiteurASelectionner);
+        $dernierMois = $pdo->dernierMoisSaisi($visiteurASelectionner);
         
         //verification que le frais est dans le dernier mois de saisi
         if($moisASelectionner == $dernierMois)
         {
-            echo "incrementation nescessaire";
-            //$dernierMois = incrementerMois($moisASelectionner);
-            //creeNouvellesLignesFrais($visiteurASelectionner, $dernierMois);
-            //reportDuFraisHorsForfait($idFraisHorsForfait,$dernierMois);
+            $dernierMois = incrementerMois($moisASelectionner);
+            $pdo->creeNouvellesLignesFrais($visiteurASelectionner, $dernierMois);
+            $pdo->reportDUnFraisHorsForfait($idFraisHorsForfait,$dernierMois);
         }
         else
         {
-            echo "juste report";
-            //reportDuFraisHorsForfait($idFraisHorsForfait,$dernierMois);
+            echo $pdo->reportDUnFraisHorsForfait($idFraisHorsForfait,$dernierMois);
         }
         
         //redirection
-        //header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
+        header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
+        break;
 }
 
