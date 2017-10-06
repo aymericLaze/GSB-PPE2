@@ -36,6 +36,8 @@ switch ($action) {
         $libEtat = $lesInfosFicheFrais['libEtat'];
         $montantValide = $lesInfosFicheFrais['montantValide'];
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
+        $dateModif = $lesInfosFicheFrais['dateModif'];
+        $dateModif = dateAnglaisVersFrancais($dateModif);
         
         include 'vues/v_validation.php';
         break;
