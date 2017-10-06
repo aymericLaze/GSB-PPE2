@@ -23,7 +23,7 @@ switch ($action) {
         include("vues/v_listeMoisComptable.php");
         
         //affichage selection de l'utilisateur
-        $lesVisiteurs = $pdo->getLesVisiteursAValider($leMois);
+        $lesVisiteurs = $pdo->getLesVisiteursAValider($moisASelectionner);
         include 'vues/v_listeVisiteur.php';
         break;
     
@@ -41,12 +41,12 @@ switch ($action) {
         $lesVisiteurs = $pdo->getLesVisiteursAValider($moisASelectionner);
         include 'vues/v_listeVisiteur.php';
 
-        
-        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
-        $lesFraisForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
-        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
-        $numAnnee = substr($leMois, 0, 4);
-        $numMois = substr($leMois, 4, 2);
+        //affichage de la fiche de frais
+        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteurASelectionner, $moisASelectionner);
+        $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
+        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($visiteurASelectionner, $moisASelectionner);
+        $numAnnee = substr($moisASelectionner, 0, 4);
+        $numMois = substr($moisASelectionner, 4, 2);
         $libEtat = $lesInfosFicheFrais['libEtat'];
         $montantValide = $lesInfosFicheFrais['montantValide'];
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
