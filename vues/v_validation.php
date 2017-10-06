@@ -79,7 +79,6 @@
                     <input type="hidden" name="mois" value="<?php echo $moisASelectionner ?>" />
                     <td><input type="submit" value="Refuser" /></td>
                 </form>
-                <td><a href="index.php?uc=validerFrais&action=supprimer&idFraisHorsForfait=<?php echo $idFrais ?>&idVisiteur=<?php echo $visiteurASelectionner ?>&mois=<?php echo $moisASelectionner ?>">Refuser</a></td>
             </tr>
         <?php 
             }
