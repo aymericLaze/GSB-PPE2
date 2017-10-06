@@ -87,7 +87,7 @@ switch ($action) {
         break;
         
     //reporte le frais hors forfait au mois suivant
-    case 'report':
+    case 'reporter':
         
         //recuperation des variables post
         $idFraisHorsForfait = $_REQUEST['idFraisHorsForfait'];
@@ -100,16 +100,18 @@ switch ($action) {
         //verification que le frais est dans le dernier mois de saisi
         if($moisASelectionner == $dernierMois)
         {
-            $dernierMois = incrementerMois($moisASelectionner);
-            creeNouvellesLignesFrais($visiteurASelectionner, $dernierMois);
-            reportDuFraisHorsForfait($idFraisHorsForfait,$dernierMois);
+            echo "incrementation nescessaire";
+            //$dernierMois = incrementerMois($moisASelectionner);
+            //creeNouvellesLignesFrais($visiteurASelectionner, $dernierMois);
+            //reportDuFraisHorsForfait($idFraisHorsForfait,$dernierMois);
         }
         else
         {
-            reportDuFraisHorsForfait($idFraisHorsForfait,$dernierMois);
+            echo "juste report";
+            //reportDuFraisHorsForfait($idFraisHorsForfait,$dernierMois);
         }
         
         //redirection
-        header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
+        //header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
 }
 
