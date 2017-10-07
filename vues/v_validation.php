@@ -85,5 +85,13 @@
             }
 	?>
         </table>
+        
+        <!-- formulaire pour valider la la fiche de frais -->
+        <form action="index.php?uc=validerFrais&action=validationFiche" method="post">
+            <input type="hidden" name="idVisiteur" value="<?php echo $visiteurASelectionner ?>" />
+            <input type="hidden" name="mois" value="<?php echo $moisASelectionner ?>" />
+            <input type="submit" value="Valider la fiche" />
+        </form>
+        
     </div>
 </div>
