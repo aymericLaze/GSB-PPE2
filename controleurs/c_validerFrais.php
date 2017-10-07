@@ -106,11 +106,26 @@ switch ($action) {
         }
         else
         {
-            echo $pdo->reportDUnFraisHorsForfait($idFraisHorsForfait,$dernierMois);
+            $pdo->reportDUnFraisHorsForfait($idFraisHorsForfait,$dernierMois);
         }
         
         //redirection
         header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
         break;
+        
+    //validation de la fiche de frais
+    case 'validerFiche' :
+        
+        //recuperation des variables post
+        $moisASelectionner = $_REQUEST['mois'];
+        $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        
+        //TEST
+        echo "Page de validation";
+        
+        //validation
+        // $pdo->majEtatFicheFrais($moisASelectionner,$visiteurASelectionner,"ETAT"); A DECOMMENTER
+        
+        //vue :
 }
 
