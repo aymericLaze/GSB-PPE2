@@ -12,7 +12,7 @@
                         $idVisiteur = $unVisiteur['idVisiteur'];
                         $nom = $unVisiteur['nom'];
                         $prenom = $unVisiteur['prenom'];
-                        if ($idVisiteur == $visiteurASelectionner) { //sert a quoi ?
+                        if ($idVisiteur == $visiteurASelectionner) {
                             ?>
                             <option selected value="<?php echo $idVisiteur ?>"><?php echo $nom . "/" . $prenom ?> </option>
                             <?php
