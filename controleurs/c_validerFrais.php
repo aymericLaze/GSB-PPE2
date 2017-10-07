@@ -124,8 +124,10 @@ switch ($action) {
         echo "Page de validation";
         
         //validation
-        // $pdo->majEtatFicheFrais($moisASelectionner,$visiteurASelectionner,"ETAT"); A DECOMMENTER
+        // $pdo->majEtatFicheFrais($moisASelectionner,$visiteurASelectionner,"VA"); A DECOMMENTER
         
         //vue :
+        
+        break;
 }
 
