@@ -132,5 +132,22 @@ switch ($action) {
         include 'vues/v_confirmationValidation.php';
         
         break;
+    
+    //refuser un frais
+    case 'refuser':
+        //récuperation des variables
+        $idFraisHorsForfait=$_REQUEST['idFraisHorsForfait'];
+        $moisASelectionner = $_REQUEST['mois'];
+        $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        
+        //fonction refuserFraisHorsForfait
+        $pdo->refuserFraisHorsForfait($idFraisHorsForfait);
+        
+         //redirection
+        header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
+        break;
+        
+        
+    
 }
 

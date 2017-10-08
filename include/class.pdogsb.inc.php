@@ -355,11 +355,15 @@ class PdoGsb{
         
         
         
-        //creer de la doc
+        //récupère le libelle et lui rajouter REFUSE devant
         public function refuserFraisHorsForfait($idFraisHorsForfait){
+            //requete
             $req="update lignefraishorsforfait"
-                    ." set libelle=concat('[REFUSE]' ,(select * from lignefraishorsforfait as L where id=".$idFraisHorsForfait."))"
+                    ." set libelle=concat('[REFUSE]' ,(select libelle from (select * from lignefraishorsforfait ) as L where L.id=".$idFraisHorsForfait."))"
                     ." where id=".$idFraisHorsForfait;
+            
+            //execution de la requête
+            PdoGsb::$monPdo->exec($req);
         }
 
 /**
@@ -376,7 +380,7 @@ class PdoGsb{
             $req = "update lignefraishorsforfait"
                     . " set mois = $dernierMois"
                     . " where id = $idFrais";
-
+            
             //execution de la requete
             PdoGsb::$monPdo->exec($req);
         }
