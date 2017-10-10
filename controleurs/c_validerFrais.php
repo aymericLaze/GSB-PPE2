@@ -62,7 +62,9 @@ switch ($action) {
         $moisASelectionner = $_REQUEST["mois"];
         $visiteurASelectionner = $_REQUEST['idVisiteur'];
         
-        //affichage de la liste de frais forfait
+        //recuperation du nombre de justificatifs
+        $nbJustificatifs = $pdo->getNbJustificatifs($visiteurASelectionner, $moisASelectionner);
+        //recuperation des frais forfait
         $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
 
         include 'vues/v_modificationFraisForfait.php';
