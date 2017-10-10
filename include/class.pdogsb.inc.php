@@ -418,7 +418,32 @@ class PdoGsb{
                 
             }
         }
+        
+/**
+ * Retourne le nom et prénom du visiteur
+ * 
+ * @param str $id numéro d'identification du visiteur
+ * @return array nom et prénom du visiteur
+ * 
+ * @author LAZE Aymeric 
+ */
+        function getNomPrenomVisiteur($id)
+        {
+            //requete et execution
+            $req = "select nom, prenom"
+                    . " from utilisateur"
+                    . " where id='$id'";
+            $res = PdoGsb::$monPdo->query($req);
+            
+            //stockage nom et prenom
+            $leVisiteur = array();
+            $laLigne = $res->fetch();
+            $leVisiteur['nom'] = $laLigne['nom'];
+            $leVisiteur['prenom'] = $laLigne['prenom'];
+            
+            return $leVisiteur;
+        }
 
 }
-       
+
 ?>
