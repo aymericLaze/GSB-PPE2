@@ -1,3 +1,12 @@
+<?php
+/**
+ * Vue pour confirmer que la fiche a été validé
+ * 
+ * @author LAZE Aymeric
+ */
+?>
+
+
 <h3>Confirmation validation : </h3>
 <div id='contenu'>
     <div class="encadre">
