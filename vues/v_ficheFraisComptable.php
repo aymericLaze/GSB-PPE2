@@ -1,3 +1,15 @@
+<?php
+/**
+ * Vue de la fiche de frais sélectionner en fonction du mois et du visiteur
+ * 
+ * Le comptable peut intéragir avec la fiche pour
+ * modifier le nombre de justificatifs et de frais forfait
+ * ainsi que reporter ou refuser un frais hors forfait
+ * 
+ * @author LAZE Aymeric
+ */
+?>
+
 <h3>Fiche de frais de <?php //echo $nomUtilisateur." "; echo $prenomUtilisateur." " ?> du mois <?php echo $numMois."-".$numAnnee?> : </h3>
 
 <div class="encadre">
