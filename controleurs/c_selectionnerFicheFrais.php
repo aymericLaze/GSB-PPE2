@@ -61,7 +61,7 @@ switch ($action) {
         
         //affichage selection du visiteur
         $lesVisiteurs = $pdo->getLesVisiteursAValider($moisASelectionner);
-        include 'vues/v_listeVisiteur.php';
+        include("vues/v_listeVisiteur.php");
 
         //affichage de la fiche de frais
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteurASelectionner, $moisASelectionner);
@@ -75,7 +75,7 @@ switch ($action) {
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
         
-        include 'vues/v_ficheFraisComptable.php';
+        include("vues/v_ficheFraisComptable.php");
         break;
     }
 }
