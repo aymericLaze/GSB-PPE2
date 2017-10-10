@@ -34,7 +34,7 @@
         </table>
     
         <!-- formulaire pour modification des elements -->
-        <form action="index.php?uc=validerFrais&action=modifier" method="post">
+        <form action="index.php?uc=actionFicheFrais&action=modifier" method="post">
             <input type="submit" value="Modifier" />
         </form>
         
@@ -64,13 +64,13 @@
                 <td><?php echo $montant ?></td>
                 
                 <!-- formulaire pour recuperer les informations sur le forfait hors frais -->
-                <form action="index.php?uc=validerFrais&action=reporter" method="post">
+                <form action="index.php?uc=actionFicheFrais&action=reporter" method="post">
                     <input type="hidden" name="idFraisHorsForfait" value="<?php echo $idFrais ?>" />
                     <td><input type="submit" value="Reporter" /></td>
                 </form>
 
                 <!-- formulaire pour recuperer les informations sur le forfait hors frais -->
-                <form action="index.php?uc=validerFrais&action=refuser" method="post">
+                <form action="index.php?uc=actionFicheFrais&action=refuser" method="post">
                     <input type="hidden" name="idFraisHorsForfait" value="<?php echo $idFrais ?>" />
                     <td><input type="submit" value="Refuser" /></td>
                 </form>
@@ -81,7 +81,7 @@
         </table>
         
         <!-- formulaire pour valider la la fiche de frais -->
-        <form action="index.php?uc=validerFrais&action=validerFiche" method="post">
+        <form action="index.php?uc=actionFicheFrais&action=validerFiche" method="post">
             <input type="submit" value="Valider la fiche" />
         </form>
         

@@ -2,7 +2,7 @@
     <h2>Modifier la fiche de frais</h2>
     
     <!-- formulaire pour recuperer les quantites -->
-    <form method="POST"  action="index.php?uc=validerFrais&action=appliquerModification">
+    <form method="POST"  action="index.php?uc=actionFicheFrais&action=appliquerModification">
         
         <!-- modification du nombre d'element forfaitises -->
         <div class="corpsForm">
