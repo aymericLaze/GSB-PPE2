@@ -55,7 +55,7 @@ class PdoGsb{
 */
 	public function getInfosVisiteur($login, $mdp){
 		$req = "select utilisateur.id as id, utilisateur.nom as nom, utilisateur.prenom as prenom, utilisateur.fonction as fonction from utilisateur 
-		where utilisateur.login='$login' and utilisateur.mdp='$mdp'";
+		where utilisateur.login='$login' and utilisateur.mdp=md5('$mdp')";
 		$rs = PdoGsb::$monPdo->query($req);
 		$ligne = $rs->fetch();
 		return $ligne;
@@ -385,6 +385,39 @@ class PdoGsb{
             //execution de la requete
             PdoGsb::$monPdo->exec($req);
         }
+        
+//fonction chiffrant les mpd existant dans la BDD
+        function scriptChiffrage(){
+            
+            //requete pour modifier la taille possible des mdp (le chiffrage est plus long que le mdp)
+            
+            $reqInit="ALTER TABLE `utilisateur` CHANGE `mdp` `mdp` CHAR(200)";
+            PdoGsb::$monPdo->exec($reqInit);
+            
+            //requete pour récuperer les mdp et les id des utilisateurs
+            
+            $req="select id,mdp "
+                    . "from utilisateur";
+            $res= PdoGsb::$monPdo->query($req);
+            $laLigne=$res->fetch();
+            
+            //boucle pour parcourir tout les utilisateurs
+            
+            while($laLigne!= null){
+                $id=$laLigne["id"];
+                $mdp=$laLigne["mdp"];
+                
+                //requete pour appliquer le chiffrage au mdp de l'utilisateur
+                
+                $req2="update utilisateur "
+                        . "set mdp=md5('".$mdp."') "
+                        . "where id='".$id."'";
+                PdoGsb::$monPdo->exec($req2);
+                $laLigne=$res->fetch();
+                
+            }
+        }
+
 }
        
 ?>
