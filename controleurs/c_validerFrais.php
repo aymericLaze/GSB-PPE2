@@ -18,7 +18,7 @@ switch ($action) {
         break;
     
     //choisir visiteur (affichage select mois)
-    case 'voirVisiteurFrais':
+    case 'choisirVisiteur':
         
         //recuperation leMois en variable de session
         $_SESSION['leMois'] = $_REQUEST['lstMois'];
