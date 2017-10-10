@@ -18,7 +18,7 @@ switch ($action) {
         //recuperation des frais forfait
         $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
 
-        include 'vues/v_modificationFraisForfait.php';
+        include("vues/v_modificationFraisForfait.php");
         break;
     }
     //validation de la fiche de frais
@@ -35,7 +35,7 @@ switch ($action) {
         $pdo->majEtatFicheFrais($visiteurASelectionner,$moisASelectionner,"VA");
         
         //vue affichage de la confirmation de la validation
-        include 'vues/v_confirmationValidation.php';
+        include("vues/v_confirmationValidation.php");
         break;
     }
     //modifie les quantites de frais forfait et retourne sur l'affichage des fiches NOUVEAU CONTROLEUR
