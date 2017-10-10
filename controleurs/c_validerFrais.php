@@ -39,7 +39,9 @@ switch ($action) {
     case 'voirFicheFrais':
         
         //recuperation leVisiteur en variable de session
-        $_SESSION['leVisiteur'] = $_REQUEST['lstVisiteur'];
+        if(isset($_REQUEST['lstVisiteur'])){
+            $_SESSION['leVisiteur'] = $_REQUEST['lstVisiteur'];
+        }
         
         //declaration - initialisation
         $moisASelectionner = $_SESSION['leMois'];
