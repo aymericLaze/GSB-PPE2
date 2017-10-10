@@ -77,10 +77,12 @@ switch ($action) {
         $moisASelectionner = $_REQUEST['leMois'];
         $visiteurASelectionner = $_REQUEST['leVisiteur'];
         $lesFrais = $_REQUEST['lesFrais'];
+        $nbJustificatifs = $_REQUEST['nbJustificatifs'];
         
-        //verification de valeur valide puis ajout
+        //verification de valeur valide puis mise a jour
         if(lesQteFraisValides($lesFrais)){
             $pdo->majFraisForfait($visiteurASelectionner,$moisASelectionner,$lesFrais);
+            $pdo->majNbJustificatifs($visiteurASelectionner,$moisASelectionner,$nbJustificatifs);
         }
         
         //redirection
