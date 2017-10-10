@@ -47,9 +47,12 @@ switch ($action) {
     }
     case 'voirFicheFrais':{
         
-        //recuperation leVisiteur en variable de session
+        //recuperation leVisiteur et nom prenom en variable de session
         if(isset($_REQUEST['lstVisiteur'])){
             $_SESSION['leVisiteur'] = $_REQUEST['lstVisiteur'];
+            $infosVisiteur = $pdo->getNomPrenomVisiteur($_SESSION['leVisiteur']);
+            $_SESSION['leNom'] = $infosVisiteur['nom'];
+            $_SESSION['lePrenom'] = $infosVisiteur['prenom'];
         }
         
         //declaration - initialisation
