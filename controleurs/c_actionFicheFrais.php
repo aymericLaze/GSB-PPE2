@@ -1,4 +1,16 @@
 <?php
+/**
+ * Contrôleur pour agir sur la fiche de frais
+ * 
+ * modifier : Modification du nombre de justificatifs et de frais forfait
+ * validerFiche : Confirmation de la validation de la fiche
+ * appliquerModification : Applique les modifications de modifier
+ * reporter : Report d'un frais hors forfait au mois dernier mois au statut CR
+ * refuser : Refuse le frais hors forfait
+ * 
+ * @author MAINENTI Eugène
+ * @author LAZE Aymeric
+ */
 
 //affichage du sommaire sur la page
 include("vues/v_sommaireComptable.php");
@@ -6,7 +18,6 @@ include("vues/v_sommaireComptable.php");
 $action = $_REQUEST['action'];
 
 switch ($action) {
-    //afficahge modification des frais forfait
     case 'modifier':{
         
         //declaration - initialisation
@@ -21,7 +32,6 @@ switch ($action) {
         include("vues/v_modificationFraisForfait.php");
         break;
     }
-    //validation de la fiche de frais
     case 'validerFiche':{
         
         //declaration - initialisation
@@ -38,7 +48,6 @@ switch ($action) {
         include("vues/v_confirmationValidation.php");
         break;
     }
-    //modifie les quantites de frais forfait et retourne sur l'affichage des fiches NOUVEAU CONTROLEUR
     case 'appliquerModification':{
         
         //recuperation des variables post
@@ -59,7 +68,6 @@ switch ($action) {
         header('Location: index.php?uc=selectionnerFicheFrais&action=voirFicheFrais');
         break;
     }
-    //reporte le frais hors forfait au mois suivant
     case 'reporter':{
         
         //recuperation des variables post
@@ -88,7 +96,6 @@ switch ($action) {
         header('Location: index.php?uc=selectionnerFicheFrais&action=voirFicheFrais');
         break;
     }
-    //refuser un frais
     case 'refuser':{
         //récuperation des variables
         $idFraisHorsForfait=$_REQUEST['hdIdFraisHorsForfait'];
