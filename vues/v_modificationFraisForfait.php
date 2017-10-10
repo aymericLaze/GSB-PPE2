@@ -7,13 +7,6 @@
         <input type="hidden" value="<?php echo $moisASelectionner?>" name="leMois" />
         <input type="hidden" value="<?php echo $visiteurASelectionner?>" name="leVisiteur" />
         
-        <!-- modification du nombre de justificatif -->
-        <label>Nombre de justificatifs</label>
-        <input type="text" name="nbJustificatifs" size="10" maxlength="5" value="<?php echo $nbJustificatifs ?>" />
-        
-        <br />
-        <br />
-        
         <!-- modification du nombre d'element forfaitises -->
         <div class="corpsForm">
             <fieldset>
@@ -34,8 +27,19 @@
 		}
 	?>
             </fieldset>    
+                
+            <br />
+            <br />
+               
+            <!-- modification du nombre de justificatif -->
+            <label>Nombre de justificatifs</label>
+            <input type="text" name="nbJustificatifs" size="10" maxlength="5" value="<?php echo $nbJustificatifs ?>" />
+            
+            <br />
+            <br />
+            
         </div>
-          
+        
         <div class="piedForm">
             <p>
                 <input id="ok" type="submit" value="Valider" size="20" />
