@@ -1,3 +1,12 @@
+<?php
+/**
+ * Vue pour modifier le nombre de justificatifs et de frais forfait
+ * 
+ * @author LAZE Aymeric
+ */
+?>
+
+
 <div id="contenu">
     <h2>Modifier la fiche de frais</h2>
     
