@@ -8,7 +8,7 @@
         <input type="hidden" value="<?php echo $visiteurASelectionner?>" name="leVisiteur" />
         
         <!-- modification du nombre de justificatif -->
-        <label>Nombre de justificatifs  </label>
+        <label>Nombre de justificatifs</label>
         <input type="text" name="nbJustificatifs" size="10" maxlength="5" value="<?php echo $nbJustificatifs ?>" />
         
         <br />
