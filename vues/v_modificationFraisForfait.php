@@ -18,7 +18,7 @@
 	?>
                 <p>
                     <label for="idFrais"><?php echo $libelle ?></label>
-                    <input type="text" id="idFrais" name="lesFrais[<?php echo $idFrais?>]" size="10" maxlength="5" value="<?php echo $quantite?>" >
+                    <input type="text" id="idFrais" name="txtLesFrais[<?php echo $idFrais?>]" size="10" maxlength="5" value="<?php echo $quantite?>" >
 		</p>
 	<?php
 		}
@@ -30,7 +30,7 @@
                
             <!-- modification du nombre de justificatif -->
             <label>Nombre de justificatifs</label>
-            <input type="text" name="nbJustificatifs" size="10" maxlength="5" value="<?php echo $nbJustificatifs ?>" />
+            <input type="text" name="txtNbJustificatifs" size="10" maxlength="5" value="<?php echo $nbJustificatifs ?>" />
             
             <br />
             <br />

@@ -65,13 +65,13 @@
                 
                 <!-- formulaire pour recuperer les informations sur le forfait hors frais -->
                 <form action="index.php?uc=actionFicheFrais&action=reporter" method="post">
-                    <input type="hidden" name="idFraisHorsForfait" value="<?php echo $idFrais ?>" />
+                    <input type="hidden" name="hdIdFraisHorsForfait" value="<?php echo $idFrais ?>" />
                     <td><input type="submit" value="Reporter" /></td>
                 </form>
 
                 <!-- formulaire pour recuperer les informations sur le forfait hors frais -->
                 <form action="index.php?uc=actionFicheFrais&action=refuser" method="post">
-                    <input type="hidden" name="idFraisHorsForfait" value="<?php echo $idFrais ?>" />
+                    <input type="hidden" name="hdIdFraisHorsForfait" value="<?php echo $idFrais ?>" />
                     <td><input type="submit" value="Refuser" /></td>
                 </form>
             </tr>

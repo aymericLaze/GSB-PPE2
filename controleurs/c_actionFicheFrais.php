@@ -42,8 +42,8 @@ switch ($action) {
     case 'appliquerModification':{
         
         //recuperation des variables post
-        $lesFrais = $_REQUEST['lesFrais'];
-        $nbJustificatifs = $_REQUEST['nbJustificatifs'];
+        $lesFrais = $_REQUEST['txtLesFrais'];
+        $nbJustificatifs = $_REQUEST['txtNbJustificatifs'];
         
         //declaration - initialisation
         $moisASelectionner = $_SESSION['leMois'];
@@ -63,7 +63,7 @@ switch ($action) {
     case 'reporter':{
         
         //recuperation des variables post
-        $idFraisHorsForfait = $_REQUEST['idFraisHorsForfait'];
+        $idFraisHorsForfait = $_REQUEST['hdIdFraisHorsForfait'];
         
         //declaration - initialisation
         $moisASelectionner = $_SESSION['leMois'];
@@ -91,7 +91,7 @@ switch ($action) {
     //refuser un frais
     case 'refuser':{
         //récuperation des variables
-        $idFraisHorsForfait=$_REQUEST['idFraisHorsForfait'];
+        $idFraisHorsForfait=$_REQUEST['hdIdFraisHorsForfait'];
         
         //declaration - initialisation
         $moisASelectionner = $_SESSION['leMois'];
