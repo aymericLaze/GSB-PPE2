@@ -2,6 +2,10 @@
 /**
  * Contrôleur pour choisir quelle fiche de frais afficher
  * 
+ * Sélection du mois : choisirMois
+ * Sélection du visiteur : choisirVisiteur
+ * Affichage de la fiche de frais : voirFicheFrais
+ * 
  * @author MAINENTI Eugène
  * @author LAZE Aymeric
  */
