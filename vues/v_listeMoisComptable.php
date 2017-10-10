@@ -1,3 +1,11 @@
+<?php
+/**
+ * Vue pour sélectionner un mois avec des fiches de frais disponible
+ * 
+ * @author MAINENTI Eugène
+ */
+?>
+
 <div id="contenu">
     <h2>Fiches de frais</h2>
     <h3>Mois à sélectionner : </h3>
