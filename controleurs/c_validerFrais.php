@@ -123,10 +123,8 @@ switch ($action) {
         $moisASelectionner = $_REQUEST['mois'];
         $visiteurASelectionner = $_REQUEST['idVisiteur'];
         
-        /*
         $numAnnee = substr($moisASelectionner, 0, 4);
         $numMois = substr($moisASelectionner, 4, 2);
-         */
         
         //validation
         $pdo->majEtatFicheFrais($moisASelectionner,$visiteurASelectionner,"VA");
