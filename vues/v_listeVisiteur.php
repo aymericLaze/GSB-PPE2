@@ -1,3 +1,11 @@
+<?php
+/**
+ * Vue pour sélectionner les visiteurs ayant des fiches de frais à l'état 'CL'
+ * 
+ * @author MAINENTI Eugène
+ */
+?>
+
 <h3>Visiteur à sélectionner : </h3>
     <form action="index.php?uc=selectionnerFicheFrais&action=voirFicheFrais" method="post">
         <div class="corpsForm">
