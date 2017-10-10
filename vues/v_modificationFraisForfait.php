@@ -3,9 +3,6 @@
     
     <!-- formulaire pour recuperer les quantites -->
     <form method="POST"  action="index.php?uc=validerFrais&action=appliquerModification">
-        <!--leMois et leVisiteur -->
-        <input type="hidden" value="<?php echo $moisASelectionner?>" name="leMois" />
-        <input type="hidden" value="<?php echo $visiteurASelectionner?>" name="leVisiteur" />
         
         <!-- modification du nombre d'element forfaitises -->
         <div class="corpsForm">
