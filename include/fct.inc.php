@@ -202,12 +202,12 @@ function nbErreurs(){
 }
 
 /**
- * @author Aymeric Laze
- * 
  * Retourne le mois augmente d'un sous la forme aaaamm
  * 
  * @param str $mois sous forme aaaamm
  * @return str $nouveauMois sous la forme aaaamm augmenté d'un, l'annee peut augmenter en consequence
+ * 
+ * @author Aymeric Laze
  */
 function incrementerMois($mois)
 {    
