@@ -368,12 +368,13 @@ class PdoGsb{
         }
 
 /**
- * @author Aymeric Laze
  * 
  * Reporte le frais hors forfait au mois de la derniere fiche de frais
  * 
  * @param str $idFrais identifiant du mois à mettre à jour
  * @param str $dernierMois mois auquel doit être le frais hors forfait
+ * 
+ * @author Aymeric Laze
  */
         function reportDUnFraisHorsForfait($idFrais, $dernierMois)
         {
