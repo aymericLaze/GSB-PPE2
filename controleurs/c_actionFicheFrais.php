@@ -37,6 +37,8 @@ switch ($action) {
         //declaration - initialisation
         $moisASelectionner = $_SESSION['leMois'];
         $visiteurASelectionner = $_SESSION['leVisiteur'];
+        $nomVisiteur = $_SESSION['leNom'];
+        $prenomVisiteur = $_SESSION['lePrenom'];
         
         $numAnnee = substr($moisASelectionner, 0, 4);
         $numMois = substr($moisASelectionner, 4, 2);

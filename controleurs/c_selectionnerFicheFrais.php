@@ -58,6 +58,8 @@ switch ($action) {
         //declaration - initialisation
         $moisASelectionner = $_SESSION['leMois'];
         $visiteurASelectionner = $_SESSION['leVisiteur'];
+        $nomVisiteur = $_SESSION['leNom'];
+        $prenomVisiteur = $_SESSION['lePrenom'];
         
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
