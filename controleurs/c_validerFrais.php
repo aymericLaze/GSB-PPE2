@@ -7,6 +7,7 @@ $action = $_REQUEST['action'];
 switch ($action) {
     //choisir mois
     case 'choisirMois':
+        
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
         include 'vues/v_listeMoisComptable.php';
@@ -14,6 +15,7 @@ switch ($action) {
     
     //choisir visiteur (affichage select mois)
     case 'voirVisiteurFrais':
+        
         //recuperation leMois
         $moisASelectionner = $_REQUEST['lstMois'];
         
@@ -28,6 +30,7 @@ switch ($action) {
     
     //affichage fiche de frais (affichage select mois/visiteur)
     case 'voirFicheFrais':
+        
         //recuperation leMois et leVisiteur
         $moisASelectionner = $_REQUEST["mois"];
         $visiteurASelectionner = $_REQUEST['lstVisiteur'];
@@ -51,7 +54,6 @@ switch ($action) {
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
-        
         include 'vues/v_validation.php';
         break;
     
@@ -129,9 +131,8 @@ switch ($action) {
         //validation
         $pdo->majEtatFicheFrais($visiteurASelectionner,$moisASelectionner,"VA");
         
-        //vue :
+        //vue affichage de la confirmation de la validation
         include 'vues/v_confirmationValidation.php';
-        
         break;
     
     //refuser un frais
@@ -146,9 +147,6 @@ switch ($action) {
         
          //redirection
         header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
-        break;
-        
-        
-    
+        break;    
 }
 
