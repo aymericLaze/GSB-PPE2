@@ -8,6 +8,10 @@ switch ($action) {
     //choisir mois
     case 'choisirMois':
         
+        //suppresion des sessions leMois leVisiteur
+        unset($_SESSION['leMois']);
+        unset($_SESSION['leVisiteur']);
+        
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
         include 'vues/v_listeMoisComptable.php';
