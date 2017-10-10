@@ -2,9 +2,9 @@
 /**
  * Contrôleur pour choisir quelle fiche de frais afficher
  * 
- * Sélection du mois : choisirMois
- * Sélection du visiteur : choisirVisiteur
- * Affichage de la fiche de frais : voirFicheFrais
+ * choisirMois : Sélection du mois
+ * choisirVisiteur : Sélection du visiteur
+ * voirFicheFrais : Affichage de la fiche de frais
  * 
  * @author MAINENTI Eugène
  * @author LAZE Aymeric
@@ -17,7 +17,6 @@ include("vues/v_sommaireComptable.php");
 $action = $_REQUEST['action'];
 
 switch ($action) {
-    //choisir mois
     case 'choisirMois':{
         
         //suppresion des sessions leMois leVisiteur
@@ -29,7 +28,6 @@ switch ($action) {
         include("vues/v_listeMoisComptable.php");
         break;
     }
-    //choisir visiteur (affichage select mois)
     case 'choisirVisiteur':{
         
         //recuperation leMois en variable de session
@@ -47,7 +45,6 @@ switch ($action) {
         include("vues/v_listeVisiteur.php");
         break;
     }
-    //affichage fiche de frais (affichage select mois/visiteur)
     case 'voirFicheFrais':{
         
         //recuperation leVisiteur en variable de session
