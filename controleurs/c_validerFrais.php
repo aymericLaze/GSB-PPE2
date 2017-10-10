@@ -16,8 +16,11 @@ switch ($action) {
     //choisir visiteur (affichage select mois)
     case 'voirVisiteurFrais':
         
-        //recuperation leMois
-        $moisASelectionner = $_REQUEST['lstMois'];
+        //recuperation leMois en variable de session
+        $_SESSION['leMois'] = $_REQUEST['lstMois'];
+        
+        //declaration - initialisation
+        $moisASelectionner = $_SESSION['leMois'];
         
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
@@ -31,9 +34,12 @@ switch ($action) {
     //affichage fiche de frais (affichage select mois/visiteur)
     case 'voirFicheFrais':
         
-        //recuperation leMois et leVisiteur
-        $moisASelectionner = $_REQUEST["mois"];
-        $visiteurASelectionner = $_REQUEST['lstVisiteur'];
+        //recuperation leVisiteur en variable de session
+        $_SESSION['leVisiteur'] = $_REQUEST['lstVisiteur'];
+        
+        //declaration - initialisation
+        $moisASelectionner = $_SESSION['leMois'];
+        $visiteurASelectionner = $_SESSION['leVisiteur'];
         
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
@@ -60,9 +66,9 @@ switch ($action) {
     //afficahge modification des frais forfait
     case 'modifier':
         
-        //recuperation leMois et leVisiteur
-        $moisASelectionner = $_REQUEST["mois"];
-        $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        //declaration - initialisation
+        $moisASelectionner = $_SESSION['leMois'];
+        $visiteurASelectionner = $_SESSION['leVisiteur'];
         
         //recuperation du nombre de justificatifs
         $nbJustificatifs = $pdo->getNbJustificatifs($visiteurASelectionner, $moisASelectionner);
@@ -76,10 +82,12 @@ switch ($action) {
     case 'appliquerModification':
         
         //recuperation des variables post
-        $moisASelectionner = $_REQUEST['leMois'];
-        $visiteurASelectionner = $_REQUEST['leVisiteur'];
         $lesFrais = $_REQUEST['lesFrais'];
         $nbJustificatifs = $_REQUEST['nbJustificatifs'];
+        
+        //declaration - initialisation
+        $moisASelectionner = $_SESSION['leMois'];
+        $visiteurASelectionner = $_SESSION['leVisiteur'];
         
         //verification de valeur valide puis mise a jour
         if(lesQteFraisValides($lesFrais)){
@@ -88,7 +96,7 @@ switch ($action) {
         }
         
         //redirection
-        header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
+        header('Location: index.php?uc=validerFrais&action=voirFicheFrais');
         break;
         
     //reporte le frais hors forfait au mois suivant
@@ -96,8 +104,10 @@ switch ($action) {
         
         //recuperation des variables post
         $idFraisHorsForfait = $_REQUEST['idFraisHorsForfait'];
-        $moisASelectionner = $_REQUEST['mois'];
-        $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        
+        //declaration - initialisation
+        $moisASelectionner = $_SESSION['leMois'];
+        $visiteurASelectionner = $_SESSION['leVisiteur'];
         
         //recuperation date du dernier mois saisi
         $dernierMois = $pdo->dernierMoisSaisi($visiteurASelectionner);
@@ -115,15 +125,15 @@ switch ($action) {
         }
         
         //redirection
-        header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
+        header('Location: index.php?uc=validerFrais&action=voirFicheFrais');
         break;
         
     //validation de la fiche de frais
     case 'validerFiche' :
         
-        //recuperation des variables post
-        $moisASelectionner = $_REQUEST['mois'];
-        $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        //declaration - initialisation
+        $moisASelectionner = $_SESSION['leMois'];
+        $visiteurASelectionner = $_SESSION['leVisiteur'];
         
         $numAnnee = substr($moisASelectionner, 0, 4);
         $numMois = substr($moisASelectionner, 4, 2);
@@ -139,14 +149,16 @@ switch ($action) {
     case 'refuser':
         //récuperation des variables
         $idFraisHorsForfait=$_REQUEST['idFraisHorsForfait'];
-        $moisASelectionner = $_REQUEST['mois'];
-        $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        
+        //declaration - initialisation
+        $moisASelectionner = $_SESSION['leMois'];
+        $visiteurASelectionner = $_SESSION['leVisiteur'];
         
         //fonction refuserFraisHorsForfait
         $pdo->refuserFraisHorsForfait($idFraisHorsForfait);
         
          //redirection
-        header('Location: index.php?uc=validerFrais&action=voirFicheFrais&lstVisiteur='.$visiteurASelectionner.'&mois='.$moisASelectionner);
+        header('Location: index.php?uc=validerFrais&action=voirFicheFrais');
         break;    
 }
 
