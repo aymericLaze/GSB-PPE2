@@ -122,14 +122,14 @@ switch ($action) {
         //recuperation des variables post
         $moisASelectionner = $_REQUEST['mois'];
         $visiteurASelectionner = $_REQUEST['idVisiteur'];
+        
+        /*
         $numAnnee = substr($moisASelectionner, 0, 4);
         $numMois = substr($moisASelectionner, 4, 2);
-        
-        //TEST
-        echo "Page de validation";
+         */
         
         //validation
-        // $pdo->majEtatFicheFrais($moisASelectionner,$visiteurASelectionner,"VA"); A DECOMMENTER
+        $pdo->majEtatFicheFrais($moisASelectionner,$visiteurASelectionner,"VA");
         
         //vue :
         include 'vues/v_confirmationValidation.php';
