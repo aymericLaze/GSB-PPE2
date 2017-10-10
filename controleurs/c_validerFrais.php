@@ -1,9 +1,8 @@
 <?php
 
+//affichage du sommaire sur la page
 include("vues/v_sommaireComptable.php");
-/*$mois = getMois(date("d/m/Y"));
-$numAnnee = substr($mois, 0, 4);    A SUPPRIMER (CONFIRMER AVEC Eugene)
-$numMois = substr($mois, 4, 2);*/
+
 $action = $_REQUEST['action'];
 switch ($action) {
     //choisir mois
