@@ -1,4 +1,12 @@
-   <!-- Division pour le sommaire -->
+<?php
+/**
+ * Vue du sommaire pour un comptable
+ * 
+ * @author MAINENTI Eugène
+ */
+?>
+
+<!-- Division pour le sommaire -->
     <div id="menuGauche">
      <div id="infosUtil">
     
@@ -13,7 +21,7 @@
 				<?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>
 			</li>
            <li class="smenu">
-              <a href="index.php?uc=selectionnerFicheFrais&action=choisirMois" title="Valider fiche de frais ">Valider fiche de frais</a>
+              <a href="index.php?uc=validerFrais&action=choisirMois" title="Valider fiche de frais ">Valider fiche de frais</a>
            </li>
            
  	   <li class="smenu">
