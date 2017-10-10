@@ -127,7 +127,7 @@ switch ($action) {
         $numMois = substr($moisASelectionner, 4, 2);
         
         //validation
-        $pdo->majEtatFicheFrais($moisASelectionner,$visiteurASelectionner,"VA");
+        $pdo->majEtatFicheFrais($visiteurASelectionner,$moisASelectionner,"VA");
         
         //vue :
         include 'vues/v_confirmationValidation.php';
