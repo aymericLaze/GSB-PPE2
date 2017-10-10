@@ -1,4 +1,11 @@
 <?php
+/**
+ * Contrôleur pour choisir quelle fiche de frais afficher
+ * 
+ * @author MAINENTI Eugène
+ * @author LAZE Aymeric
+ */
+
 
 //affichage du sommaire sur la page
 include("vues/v_sommaireComptable.php");
