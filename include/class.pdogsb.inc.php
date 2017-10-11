@@ -84,6 +84,7 @@ class PdoGsb{
 		}
 		return $lesLignes; 
 	}
+ 
 /**
  * Retourne le nombre de justificatif d'un utilisateur pour un mois donné
  
@@ -328,8 +329,16 @@ class PdoGsb{
 	}
         
         
-        
-        //creer de la doc
+/**
+ *  Récupère la liste des visiteurs qui ont des fiches de frais à valider pour le mois donnée en paramètre
+ * 
+ *
+ * @param int $unMois sous le format YYYYMM
+ * @return array $lesVisiteurs comportant l'identifiant, le nom et le prénom des visiteurs en question
+ * 
+ * @author MAINENTI Eugene
+ *
+ */
         public function getLesVisiteursAValider($unMois){
             $req="select id,nom,prenom "
                  ."from utilisateur join fichefrais on fichefrais.idUtilisateur=utilisateur.id "
@@ -356,11 +365,17 @@ class PdoGsb{
         
         
         
-        //récupère le libelle et lui rajouter REFUSE devant
+/**
+ * Récupère le libelle d'un frais hors forfait et lui rajoute [REFUSE] devant
+ * 
+ * @param str $idFraisHorsForfait identifiant du frais hors forfait à mettre a jour
+ * 
+ * @author MAINENTI Eugene
+ */
         public function refuserFraisHorsForfait($idFraisHorsForfait){
             //requete
             $req="update lignefraishorsforfait"
-                    ." set libelle=concat('[REFUSE]' ,(select libelle from (select * from lignefraishorsforfait ) as L where L.id=".$idFraisHorsForfait."))"
+                    ." set libelle=concat('[REFUSE] ' ,(select libelle from (select * from lignefraishorsforfait ) as L where L.id=".$idFraisHorsForfait."))"
                     ." where id=".$idFraisHorsForfait;
             
             //execution de la requête

@@ -1,6 +1,6 @@
 <?php
 /**
- * Vue pour sélectionner un mois avec des fiches de frais disponible
+ * Vue pour sélectionner un mois avec des fiches de frais en attente de validation
  * 
  * @author MAINENTI Eugène
  */
