@@ -29,6 +29,7 @@ switch ($action) {
         
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
+        $nbMois=count($lesMois);
         include("vues/v_listeMoisComptable.php");
         break;
     }
