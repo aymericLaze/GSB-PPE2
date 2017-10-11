@@ -17,6 +17,10 @@ include("vues/v_sommaireComptable.php");
 $action = $_REQUEST['action'];
 
 switch ($action) {
+    case 'accueil':{
+        include ("vues/v_accueilUtilisateur.php");
+        break;
+    }
     case 'choisirMois':{
         
         //suppresion des sessions leMois leVisiteur

@@ -34,6 +34,8 @@ switch($action){
                         {
                             include("vues/v_sommaireComptable.php");
                         }
+                        include ("vues/v_accueilUtilisateur.php");
+                        
 		}
 		break;
 	}
