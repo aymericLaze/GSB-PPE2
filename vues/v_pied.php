@@ -1,5 +1,5 @@
 <?php
-    if($_SESSION['fonction'] === 'comptable')
+    if(($_SESSION['fonction'] === 'comptable') and !($action === 'accueil'))
     {
 ?>
         <a href='index.php?uc=selectionnerFicheFrais&action=accueil'>Retour à l'accueil</a>
