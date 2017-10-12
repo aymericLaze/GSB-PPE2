@@ -4,8 +4,10 @@
  * 
  * @author MAINENTI Eugène
  */
-?>
 
+if ($nbMois!=0){
+
+?>
 <div id="contenu">
     <h2>Fiches de frais</h2>
     <h3>Mois à sélectionner : </h3>
@@ -44,4 +46,11 @@
         </div>
 
     </form>
-
+<?php
+}
+else {
+    ?>
+      <h3>Aucune fiche à valider</h3>
+      <?php
+}
+?>

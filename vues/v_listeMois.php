@@ -1,7 +1,4 @@
-<?php
-if ($nbMois!=0){
 
-?>
 ﻿ <div id="contenu">
       <h2>Mes fiches de frais</h2>
       <h3>Mois à sélectionner : </h3>
@@ -43,11 +40,3 @@ if ($nbMois!=0){
       </div>
         
       </form>
-<?php
-}
-else {
-    ?>
-      <h3>Aucune fiche à valider</h3>
-      <?php
-}
-?>
