@@ -15,10 +15,10 @@ if ($nbFiche != 0){
     <h3>Fiche à sélectionner : </h3>
     <form action="" method="post">
         <div class="corpsForm">
-
             <p>
-
                 <label for="lstMois" accesskey="n">Fiches : </label>
+                
+                <!-- liste déroulante des fiches en payement -->
                 <select id="listMois" name="lstFiche">
                     <?php
                     foreach ($lesFicheEnPayement as $uneFiche) {
@@ -32,22 +32,25 @@ if ($nbFiche != 0){
                     <?php
                     }
                     ?>    
-
                 </select>
+                
             </p>
         </div>
+        
+        <!-- pied de la page pour validation -->
         <div class="piedForm">    
             <p>
                 <input id="ok" type="submit" value="Valider" size="20" />
-                <input id="annuler" type="reset" value="Effacer" size="20" />
             </p> 
         </div>
 
     </form>
+    
 <?php
 } else {
-    ?>
-      <h3>Aucune fiche en cours de payement</h3>
-      <?php
+?>
+    <!-- affichage message d'erreur si aucune fiche en cours de payement n'est disponible -->  
+    <h3>Aucune fiche en cours de payement</h3>
+<?php
 }
 ?>
