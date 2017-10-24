@@ -442,6 +442,7 @@ class PdoGsb{
             $req = "Select fichefrais.idUtilisateur, fichefrais.mois, utilisateur.nom, utilisateur.prenom"
                     . " from fichefrais INNER JOIN utilisateur on fichefrais.idUtilisateur = utilisateur.id"
                     . " where idEtat='VA'";
+            
             $res = PdoGsb::$monPdo->query($req);
             
             //ajout pk fiche 
