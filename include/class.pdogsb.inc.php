@@ -389,7 +389,7 @@ class PdoGsb{
  * @param str $idFrais identifiant du mois à mettre à jour
  * @param str $dernierMois mois auquel doit être le frais hors forfait
  * 
- * @author Aymeric Laze
+ * @author LAZE Aymeric
  */
         function reportDUnFraisHorsForfait($idFrais, $dernierMois)
         {
@@ -429,6 +429,44 @@ class PdoGsb{
             return $leVisiteur;
         }
 
+        /**
+         * Retourne les informations pour séléctionner une fiche de frais en cours de payement
+         * 
+         * @return array lesInfoFichesEnPayement
+         * 
+         * @autor LAZE Aymeric
+         */
+        function getInfoFichesEnPayement()
+        {
+            //requete et execution
+            $req = "Select fichefrais.idUtilisateur, fichefrais.mois, utilisateur.nom, utilisateur.prenom"
+                    . " from fichefrais INNER JOIN utilisateur on fichefrais.idUtilisateur = utilisateur.id"
+                    . " where idEtat='VA'";
+            $res = PdoGsb::$monPdo->query($req);
+            
+            //ajout pk fiche 
+            $lesLigne = $res->fetchall();
+            $nbLigne = count($lesLigne);
+            for($i=0; $i < $nbLigne; $i++)
+            {
+                //concatenation du nom prenom
+                $lIdentite = $lesLigne[$i]['nom']." ".$lesLigne[$i]['prenom'];
+                
+                //scindement du num mois et num annee
+                $leMois = $lesLigne[$i]['mois'];
+                $numAnnee = substr( $leMois,0,4);
+                $numMois = substr( $leMois,4,2);
+                
+                //stockage dans tableau
+                $lesInfoFichesEnPayement[$i]['mois'] = $leMois; 
+                $lesInfoFichesEnPayement[$i]['visiteur'] = $lesLigne[$i]['idUtilisateur'];
+                $lesInfoFichesEnPayement[$i]['identite'] = $lIdentite;
+                $lesInfoFichesEnPayement[$i]['numMois'] = $numMois;
+                $lesInfoFichesEnPayement[$i]['numAnnee'] = $numAnnee;
+            }
+            
+            return $lesInfoFichesEnPayement;
+        }
 }
 
 ?>
