@@ -2,9 +2,10 @@
 /**
  * Contrôleur pour choisir quelle fiche de frais afficher
  * 
- * choisirMois : Sélection du mois
- * choisirVisiteur : Sélection du visiteur
- * voirFicheFrais : Affichage de la fiche de frais
+ * choisirMois : Sélection du mois avec frais non validé (CL)
+ * choisirVisiteur : Sélection du visiteur avec frais non validé (CL)
+ * voirFicheFrais : Affichage de la fiche de frais non validé (CL)
+ * choisirFicheSuiviPayement : Sélection des mois avec frais en payement (VA)
  * 
  * @author MAINENTI Eugène
  * @author LAZE Aymeric
@@ -90,5 +91,12 @@ switch ($action) {
         
         include("vues/v_ficheFraisComptable.php");
         break;
+    }
+    case 'choisirFicheSuiviPayement':{
+    
+        $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
+        $nbFiche = count($lesFicheEnPayement);
+        
+        include("vues/v_selectionFichesEnPayement.php");
     }
 }
