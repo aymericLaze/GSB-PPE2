@@ -94,9 +94,11 @@ switch ($action) {
     }
     case 'choisirFicheSuiviPayement':{
     
+        //recuperation des infos
         $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
         $nbFiche = count($lesFicheEnPayement);
         
+        //inclusion de la vue de selection
         include("vues/v_selectionFichesEnPayement.php");
     }
 }
