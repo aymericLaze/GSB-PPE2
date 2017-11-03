@@ -7,7 +7,7 @@
 ?>
 
 <h3>Visiteur à sélectionner : </h3>
-    <form action="index.php?uc=selectionnerFicheFrais&action=voirFicheFrais" method="post">
+    <form action="index.php?uc=selectionnerFicheFrais&action=voirFicheFraisAValider" method="post">
         <div class="corpsForm">
 
             <p>
