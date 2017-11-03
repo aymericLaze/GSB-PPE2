@@ -101,4 +101,17 @@ switch ($action) {
         //inclusion de la vue de selection
         include("vues/v_selectionFichesEnPayement.php");
     }
+    
+    case 'voirFicheFraisAPayer':{
+    
+        //recuperation des variables
+        $lstFiche = $_REQUEST['lstFiche'];
+        
+        //separation de l'id et de la date de la fiche
+        $selection = explode('/', $lstFiche);
+        $id = $selection[0];
+        $date = $selection[1];
+        
+        
+    }
 }
