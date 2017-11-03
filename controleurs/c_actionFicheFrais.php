@@ -12,10 +12,12 @@
  * @author LAZE Aymeric
  */
 
-//affichage du sommaire sur la page
-include("vues/v_sommaireComptable.php");
-
 $action = $_REQUEST['action'];
+
+//affichage du sommaire sur la page
+if($action != 'pdf-payement') {
+    include("vues/v_sommaireComptable.php");
+}
 
 switch ($action) {
     case 'modifier':{
