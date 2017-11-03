@@ -113,5 +113,12 @@ switch ($action) {
         header('Location: index.php?uc=selectionnerFicheFrais&action=voirFicheFrais');
         break;
     }
+    
+    case 'pdf-payement':{
+        //recuperation des variables
+        $lstFiche = $_REQUEST['idFiche'];
+        
+        break;
+    }
 }
 
