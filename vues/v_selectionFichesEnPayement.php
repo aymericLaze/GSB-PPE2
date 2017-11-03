@@ -13,7 +13,7 @@ if ($nbFiche != 0){
 <div id="contenu">
     <h2>Fiches de frais</h2>
     <h3>Fiche à sélectionner : </h3>
-    <form action="" method="post">
+    <form action="index.php?uc=actionFicheFrais&action=payer" method="post">
         <div class="corpsForm">
             <p>
                 <label for="lstMois" accesskey="n">Fiches : </label>
