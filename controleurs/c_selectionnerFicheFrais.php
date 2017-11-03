@@ -100,6 +100,7 @@ switch ($action) {
         
         //inclusion de la vue de selection
         include("vues/v_selectionFichesEnPayement.php");
+        break;
     }
     
     case 'voirFicheFraisAPayer':{
@@ -124,7 +125,15 @@ switch ($action) {
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
         
+        echo 'PAGE DE FICHE FRAIS A PAYER</br>';
         
+        //PDF en attendant qu'Eugene fasse la vue
+?>
+        <form action='index.php?uc=actionFicheFrais&action=pdf-payement'>
+            <input type='hidden' name='idFiche' value='<?php $lsFiche ?>' />
+            <input type='submit' value='Génerer PDF' />
+        </form>
+<?php
         break;
     }
 }
