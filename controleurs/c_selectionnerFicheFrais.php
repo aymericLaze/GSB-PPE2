@@ -109,9 +109,22 @@ switch ($action) {
         
         //separation de l'id et de la date de la fiche
         $selection = explode('/', $lstFiche);
-        $id = $selection[0];
-        $date = $selection[1];
+        $visiteurASelectionner = $selection[0];
+        $moisASelectionner = $selection[1];
+        
+        //recuperation des infos de la fiche de frais
+        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteurASelectionner, $moisASelectionner);
+        $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
+        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($visiteurASelectionner, $moisASelectionner);
+        $numAnnee = substr($moisASelectionner, 0, 4);
+        $numMois = substr($moisASelectionner, 4, 2);
+        $libEtat = $lesInfosFicheFrais['libEtat'];
+        $montantValide = $lesInfosFicheFrais['montantValide'];
+        $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
+        $dateModif = $lesInfosFicheFrais['dateModif'];
+        $dateModif = dateAnglaisVersFrancais($dateModif);
         
         
+        break;
     }
 }
