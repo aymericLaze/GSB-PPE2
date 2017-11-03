@@ -130,7 +130,7 @@ switch ($action) {
         //PDF en attendant qu'Eugene fasse la vue
 ?>
         <form action='index.php?uc=actionFicheFrais&action=pdf-payement' method='post'>
-            <input type='hidden' name='idFiche' value='<?php $lsFiche ?>' />
+            <input type='hidden' name='idFiche' value='<?php echo $lstFiche ?>' />
             <input type='submit' value='Génerer PDF' />
         </form>
 <?php
