@@ -52,7 +52,7 @@ switch ($action) {
         include("vues/v_listeVisiteur.php");
         break;
     }
-    case 'voirFicheFrais':{
+    case 'voirFicheFraisAValider':{
         
         //recuperation leVisiteur et nom prenom en variable de session
         if(isset($_REQUEST['lstVisiteur'])){
