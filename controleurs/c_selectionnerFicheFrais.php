@@ -13,13 +13,13 @@
 
 
 //affichage du sommaire sur la page
-include("vues/v_sommaireComptable.php");
+include("vues/comptable/v_sommaireComptable.php");
 
 $action = $_REQUEST['action'];
 
 switch ($action) {
     case 'accueil':{
-        include ("vues/v_accueilUtilisateur.php");
+        include ("vues/commun/v_accueilUtilisateur.php");
         break;
     }
     case 'choisirMois':{
@@ -31,7 +31,7 @@ switch ($action) {
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
         $nbMois=count($lesMois);
-        include("vues/v_listeMoisComptable.php");
+        include("vues/comptable/v_listeMoisComptable.php");
         break;
     }
     case 'choisirVisiteur':{
@@ -45,11 +45,11 @@ switch ($action) {
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
         $nbMois=count($lesMois);
-        include("vues/v_listeMoisComptable.php");
+        include("vues/comptable/v_listeMoisComptable.php");
         
         //affichage selection de l'utilisateur
         $lesVisiteurs = $pdo->getLesVisiteursAValider($moisASelectionner);
-        include("vues/v_listeVisiteur.php");
+        include("vues/comptable/v_listeVisiteur.php");
         break;
     }
     case 'voirFicheFraisAValider':{
@@ -71,11 +71,11 @@ switch ($action) {
         //affichage selection du mois
         $lesMois = $pdo->getLesMoisEnAttente();
         $nbMois=count($lesMois);
-        include("vues/v_listeMoisComptable.php");
+        include("vues/comptable/v_listeMoisComptable.php");
         
         //affichage selection du visiteur
         $lesVisiteurs = $pdo->getLesVisiteursAValider($moisASelectionner);
-        include("vues/v_listeVisiteur.php");
+        include("vues/comptable/v_listeVisiteur.php");
 
         //affichage de la fiche de frais
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteurASelectionner, $moisASelectionner);
@@ -89,7 +89,7 @@ switch ($action) {
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
         
-        include("vues/v_ficheFraisComptable.php");
+        include("vues/comptable/v_ficheFraisComptable.php");
         break;
     }
     case 'choisirFicheSuiviPayement':{
@@ -99,7 +99,7 @@ switch ($action) {
         $nbFiche = count($lesFicheEnPayement);
         
         //inclusion de la vue de selection
-        include("vues/v_selectionFichesEnPayement.php");
+        include("vues/comptable/v_selectionFichesEnPayement.php");
         break;
     }
     
@@ -109,7 +109,7 @@ switch ($action) {
         $nbFiche = count($lesFicheEnPayement);
         
         //inclusion de la vue de selection
-        include("vues/v_selectionFichesEnPayement.php");
+        include("vues/comptable/v_selectionFichesEnPayement.php");
         
         //recuperation des variables
         $lstFiche = $_REQUEST['lstFiche'];
@@ -137,7 +137,7 @@ switch ($action) {
         $dateModif = dateAnglaisVersFrancais($dateModif);
         
         
-        include ("vues/v_afficherFichesEnPayement.php");
+        include ("vues/comptable/v_afficherFichesEnPayement.php");
         
         break;
     }

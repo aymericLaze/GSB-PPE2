@@ -5,7 +5,7 @@ if(!isset($_REQUEST['action'])){
 $action = $_REQUEST['action'];
 switch($action){
 	case 'demandeConnexion':{
-		include("vues/v_connexion.php");
+		include("vues/commun/v_connexion.php");
 		break;
 	}
 	case 'valideConnexion':{
@@ -16,8 +16,8 @@ switch($action){
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
 		if(!is_array( $visiteur)){
 			ajouterErreur("Login ou mot de passe incorrect");
-			include("vues/v_erreurs.php");
-			include("vues/v_connexion.php");
+			include("vues/commun/v_erreurs.php");
+			include("vues/commun/v_connexion.php");
 		}
 		else{
 			$id = $visiteur['id'];
@@ -28,20 +28,20 @@ switch($action){
                         
                         if($_SESSION['fonction'] === 'visiteur')
                         {
-                            include("vues/v_sommaire.php");
+                            include("vues/visiteur/v_sommaire.php");
                         }
                         else
                         {
-                            include("vues/v_sommaireComptable.php");
+                            include("vues/comptable/v_sommaireComptable.php");
                         }
-                        include ("vues/v_accueilUtilisateur.php");
+                        include ("vues/commun/v_accueilUtilisateur.php");
                         
 		}
 		break;
 	}
         case 'deconnexion' :{
                 deconnecter();
-		include("vues/v_connexion.php");
+		include("vues/commun/v_connexion.php");
 		break;
 	}
 }

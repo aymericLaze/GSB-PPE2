@@ -16,7 +16,7 @@ $action = $_REQUEST['action'];
 
 //affichage du sommaire sur la page
 if($action != 'pdf-payement') {
-    include("vues/v_sommaireComptable.php");
+    include("vues/comptable/v_sommaireComptable.php");
 }
 
 switch ($action) {
@@ -31,7 +31,7 @@ switch ($action) {
         //recuperation des frais forfait
         $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
 
-        include("vues/v_modificationFraisForfait.php");
+        include("vues/comptable/v_modificationFraisForfait.php");
         break;
     }
     case 'validerFiche':{
@@ -49,7 +49,7 @@ switch ($action) {
         $pdo->majEtatFicheFrais($visiteurASelectionner,$moisASelectionner,"VA");
         
         //vue affichage de la confirmation de la validation
-        include("vues/v_confirmationValidation.php");
+        include("vues/comptable/v_confirmationValidation.php");
         break;
     }
     case 'appliquerModification':{
