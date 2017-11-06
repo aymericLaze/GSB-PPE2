@@ -122,5 +122,10 @@ switch ($action) {
         
         break;
     }
-}
+    
+    case 'validerFicheRemboursement':{
+        //passe la fiche de l'état VA à l'état RB
+        
+    }
 
+}

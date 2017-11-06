@@ -104,7 +104,13 @@ switch ($action) {
     }
     
     case 'voirFicheFraisAPayer':{
-    
+        
+        $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
+        $nbFiche = count($lesFicheEnPayement);
+        
+        //inclusion de la vue de selection
+        include("vues/v_selectionFichesEnPayement.php");
+        
         //recuperation des variables
         $lstFiche = $_REQUEST['lstFiche'];
         
@@ -112,6 +118,11 @@ switch ($action) {
         $selection = explode('/', $lstFiche);
         $visiteurASelectionner = $selection[0];
         $moisASelectionner = $selection[1];
+        
+        //récupération du nom et prénom du visiteur correspondant
+        $infosVisiteur = $pdo->getNomPrenomVisiteur($visiteurASelectionner);
+        $nomVisiteur = $infosVisiteur['nom'];
+        $prenomVisiteur = $infosVisiteur['prenom'];
         
         //recuperation des infos de la fiche de frais
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteurASelectionner, $moisASelectionner);
@@ -125,15 +136,9 @@ switch ($action) {
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
         
-        echo 'PAGE DE FICHE FRAIS A PAYER</br>';
         
-        //PDF en attendant qu'Eugene fasse la vue
-?>
-        <form action='index.php?uc=actionFicheFrais&action=pdf-payement' method='post'>
-            <input type='hidden' name='idFiche' value='<?php echo $lstFiche ?>' />
-            <input type='submit' value='Génerer PDF' />
-        </form>
-<?php
+        include ("vues/v_afficherFichesEnPayement.php");
+        
         break;
     }
 }
