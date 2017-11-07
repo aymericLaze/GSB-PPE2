@@ -13,7 +13,7 @@ $action = $_REQUEST['action'];
 
 //inclusion entete
 if(isset($action) && $action != 'pdf-payement') {
-    include("vues/v_entete.php") ;
+    include("vues/commun/v_entete.php") ;
 }
 
 switch($uc){
@@ -38,6 +38,6 @@ switch($uc){
 
 //inclusion pied
 if(isset($action) && $action != 'pdf-payement') {
-    include("vues/v_pied.php") ;
+    include("vues/commun/v_pied.php") ;
 }
 ?>
