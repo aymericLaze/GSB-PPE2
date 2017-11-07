@@ -2,7 +2,7 @@
 /**
  * Vue de la fiche de frais sélectionner en fonction du mois et du visiteur
  * 
- * Le comptable peut générer le pdf de la fiche de frais correspondante
+ * Le comptable peut générer le pdf de la fiche de frais correspondante et confirmer le remboursement des fiches mises en payement.
  * 
  * @author MAINENTI Eugène
  */
@@ -74,5 +74,7 @@
     <form action="index.php?uc=actionFicheFrais&action=pdf-payement" method="POST"><input type="image" src="images/icon_pdf.png" style="width: 70px; height: 70px; padding-left: 0;" onclick="submit" >
         <input type='hidden' name='idFiche' value='<?php echo $lstFiche ?>' />
     </form>
-    <form 
+    <form action="index.php?uc=actionFicheFrais&action=validerFicheRemboursement" method="POST"><input type="submit" value="Valider le remboursement" style="padding-right: 0;" />
+        <input type='hidden' name='idVisiteur' value='<?php echo $visiteurASelectionner ?>' />
+        <input type='hidden' name='mois' value='<?php echo  $moisASelectionner ?>' />
 </div>

@@ -10,6 +10,8 @@ if(!isset($_REQUEST['uc']) || !$estConnecte){
 }	 
 $uc = $_REQUEST['uc'];
 
+//verification si action existe
+
 //recuperation de action pour test futur
 if(isset($_REQUEST['action'])) {
     $action = $_REQUEST['action'];

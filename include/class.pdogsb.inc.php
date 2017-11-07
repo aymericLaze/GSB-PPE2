@@ -468,6 +468,7 @@ class PdoGsb{
             
             return $lesInfoFichesEnPayement;
         }
+        
 }
 
 ?>

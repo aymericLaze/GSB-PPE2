@@ -7,6 +7,7 @@
  * appliquerModification : Applique les modifications de modifier
  * reporter : Report d'un frais hors forfait au mois dernier mois au statut CR
  * refuser : Refuse le frais hors forfait
+ * validerRemboursement : modifie l'état de la fiche au statut RB
  * 
  * @author MAINENTI Eugène
  * @author LAZE Aymeric
@@ -125,6 +126,13 @@ switch ($action) {
     
     case 'validerFicheRemboursement':{
         //passe la fiche de l'état VA à l'état RB
+        $idVisiteur = $_REQUEST['idVisiteur'];
+        $mois= $_REQUEST['mois'];
+        $pdo->majEtatFicheFrais($idVisiteur,$mois,'RB');
+        
+        include ('vues/comptable/v_confirmationValidationRemboursement.php');
+                
+        break;
         
     }
 
