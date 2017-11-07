@@ -11,14 +11,15 @@ if(!isset($_REQUEST['uc']) || !$estConnecte){
 $uc = $_REQUEST['uc'];
 
 //verification si action existe
+$actionEstExistant = isset($action);
 
 //recuperation de action pour test futur
-if(isset($_REQUEST['action'])) {
+if($actionEstExistant) {
     $action = $_REQUEST['action'];
 }
 
 //inclusion entete
-if(!isset($action) || $action != 'pdf-payement') {
+if(!$actionEstExistant || $action != 'pdf-payement') {
     include("vues/commun/v_entete.php") ;
 }
 
@@ -43,7 +44,7 @@ switch($uc){
 }
 
 //inclusion pied
-if(!isset($action) || $action != 'pdf-payement') {
+if(!$actionEstExistant || $action != 'pdf-payement') {
     include("vues/commun/v_pied.php") ;
 }
 ?>
