@@ -8,7 +8,6 @@
  */
 
 if ($nbFiche != 0){
-
 ?>
 <div id="contenu">
     <h2>Fiches de frais</h2>
@@ -20,6 +19,7 @@ if ($nbFiche != 0){
                 
                 <!-- liste déroulante des fiches en payement -->
                 <select id="listMois" name="lstFiche">
+                    <p>test</p>
                     <?php
                     foreach ($lesFicheEnPayement as $uneFiche) {
                         $visiteur = $uneFiche['visiteur'];
@@ -27,9 +27,17 @@ if ($nbFiche != 0){
                         $identite = $uneFiche['identite'];
                         $numAnnee = $uneFiche['numAnnee'];
                         $numMois = $uneFiche['numMois'];
+                        
+                        //affichage du choix fait precedement
+                        if($moisASelectionner == $mois && $visiteurASelectionner = $visiteur) {
+                    ?>
+                            <option selected value="<?php echo $visiteur. "/" .$mois ?>"><?php echo $numMois . "/" . $numAnnee." - ". $identite ?> </option>
+                    <?php
+                        } else {
                     ?>
                             <option value="<?php echo $visiteur. "/" .$mois ?>"><?php echo $numMois . "/" . $numAnnee." - ". $identite ?> </option>
                     <?php
+                        }
                     }
                     ?>    
                 </select>
