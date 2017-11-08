@@ -104,7 +104,7 @@ class PdoGsb{
  
  * @param $idVisiteur 
  * @param $mois sous la forme aaaamm
- * @return l'id, le libelle et la quantité sous la forme d'un tableau associatif 
+ * @return l'id, le libelle, la quantité et les montants sous la forme d'un tableau associatif 
 */
 	public function getLesFraisForfait($idVisiteur, $mois){
 		$req = "select fraisforfait.id as idfrais, "
