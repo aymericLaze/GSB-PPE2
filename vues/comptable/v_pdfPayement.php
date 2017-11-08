@@ -4,16 +4,14 @@
 
         //recuperation classe fpdf
         require('lib/fpdf/fpdf.php');
-        //instanciation objet type pdf
+        // instancie un objet de type FPDF qui permet de créer le PDF
         ob_start();
         $pdf = new FPDF();
-        //ajout de la page
+        // ajoute une page
         $pdf->AddPage();
-        //definition police courante
-        $pdf->SetFont('times', 'B', 16);
-        //HEADER
-        $pdf->Image('images/logo.jpg', 10, 10, 50, 50);
-        //Titre
+        // définit la police courante
+        $pdf->SetFont('Arial', 'B', 16);
+
         //ouverture dans le navigateur
         $pdf->Output();
         ob_end_flush();
