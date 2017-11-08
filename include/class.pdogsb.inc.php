@@ -391,7 +391,7 @@ class PdoGsb{
  * 
  * @author LAZE Aymeric
  */
-        function reportDUnFraisHorsForfait($idFrais, $dernierMois)
+        public function reportDUnFraisHorsForfait($idFrais, $dernierMois)
         {
             //requete pour mettre a jour le champs
             $req = "update lignefraishorsforfait"
@@ -412,7 +412,7 @@ class PdoGsb{
  * 
  * @author LAZE Aymeric 
  */
-        function getNomPrenomVisiteur($id)
+        public function getNomPrenomVisiteur($id)
         {
             //requete et execution
             $req = "select nom, prenom"
@@ -429,13 +429,13 @@ class PdoGsb{
             return $leVisiteur;
         }
 
-        /**
-         * Retourne les informations pour séléctionner une fiche de frais en cours de payement
-         * 
-         * @return array lesInfoFichesEnPayement
-         * 
-         * @autor LAZE Aymeric
-         */
+/**
+* Retourne les informations pour séléctionner une fiche de frais en cours de payement
+* 
+* @return array lesInfoFichesEnPayement
+* 
+* @autor LAZE Aymeric
+*/
         function getInfoFichesEnPayement()
         {
             //requete et execution
@@ -470,5 +470,6 @@ class PdoGsb{
         }
         
 }
+
 
 ?>
