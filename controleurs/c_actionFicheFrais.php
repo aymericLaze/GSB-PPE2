@@ -134,8 +134,9 @@ switch ($action) {
         $numAnnee = substr($moisASelectionner, 0, 4);
         $numMois = substr($moisASelectionner, 4, 2);
         
-        include ('vues/comptable/v_pdfPayement.php');
-        creerPDF($visiteurASelectionner, $nomVisiteur, $prenomVisiteur, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois);
+        //include ('vues/comptable/v_pdfPayement.php');
+        //creerPDF($visiteurASelectionner, $nomVisiteur, $prenomVisiteur, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois);
+        echo 'test';
         
         break;
     }
