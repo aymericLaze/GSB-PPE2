@@ -71,7 +71,7 @@
     </table>
 </div>
 <div>
-    <form action="index.php?uc=actionFicheFrais&action=pdf-payement" method="POST"><input type="image" src="images/icon_pdf.png" style="width: 70px; height: 70px; padding-left: 0;" onclick="submit" >
+    <form action="index.php?uc=actionFicheFrais&action=pdf-payement" target="_blank" method="POST"><input type="image" src="images/icon_pdf.png" style="width: 70px; height: 70px; padding-left: 0;" onclick="submit" >
         <input type='hidden' name='idVisiteur' value='<?php echo $visiteurASelectionner ?>' />
         <input type='hidden' name='mois' value='<?php echo  $moisASelectionner ?>' />
     </form>
