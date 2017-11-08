@@ -105,12 +105,6 @@ switch ($action) {
     
     case 'voirFicheFraisAPayer':{
         
-        $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
-        $nbFiche = count($lesFicheEnPayement);
-        
-        //inclusion de la vue de selection
-        include("vues/comptable/v_selectionFichesEnPayement.php");
-        
         //recuperation des variables
         $lstFiche = $_REQUEST['lstFiche'];
         
@@ -136,7 +130,12 @@ switch ($action) {
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
         
+        //inclusion de la vue de selection
+        $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
+        $nbFiche = count($lesFicheEnPayement);
+        include("vues/comptable/v_selectionFichesEnPayement.php");
         
+        //inclusion de la vue de la fiche a valider le payement
         include ("vues/comptable/v_afficherFichesEnPayement.php");
         
         break;
