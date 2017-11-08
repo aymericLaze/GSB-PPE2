@@ -72,7 +72,8 @@
 </div>
 <div>
     <form action="index.php?uc=actionFicheFrais&action=pdf-payement" method="POST"><input type="image" src="images/icon_pdf.png" style="width: 70px; height: 70px; padding-left: 0;" onclick="submit" >
-        <input type='hidden' name='idFiche' value='<?php echo $lstFiche ?>' />
+        <input type='hidden' name='idVisiteur' value='<?php echo $visiteurASelectionner ?>' />
+        <input type='hidden' name='mois' value='<?php echo  $moisASelectionner ?>' />
     </form>
     <form action="index.php?uc=actionFicheFrais&action=validerFicheRemboursement" method="POST"><input type="submit" value="Valider le remboursement" style="padding-right: 0;" />
         <input type='hidden' name='idVisiteur' value='<?php echo $visiteurASelectionner ?>' />
