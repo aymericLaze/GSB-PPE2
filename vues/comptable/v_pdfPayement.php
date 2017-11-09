@@ -1,10 +1,35 @@
 <?php
+/**
+ * page pour generer le PDF imprimable
+ * 
+ * @author LAZE Aymeric
+ */    
 
+    /**
+     * Permet d'afficher le PDF imprimable avec les informations de la fiche de
+     * frais selectionne
+     * 
+     * @param str $idVisiteur
+     * @param str $nomVisiteur
+     * @param str $prenomVisiteur
+     * @param array $lesFraisHorsForfait
+     * @param array $lesFraisForfait
+     * @param array $lesInfosFicheFrais
+     * @param int $numAnnee
+     * @param int $numMois
+     * 
+     * @author LAZE Aymeric
+     */
     function creerPDF($idVisiteur, $nomVisiteur, $prenomVisiteur, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois) {
-
+        
+        //definition de constante
+        define('TAILLE_PETIT', 45);
+        define('TAILLE_GRAND', 60);
+        
+        //declaration - initialisation de variable
         $montantTotal = 0;
         $dateDuJour = new DateTime();
-        $aujourdhui = $dateDuJour->format('d/M/Y');
+        $aujourdhui = $dateDuJour->format('d/m/Y');
         
         //recuperation classe fpdf
         require('lib/fpdf/fpdf.php');
@@ -20,52 +45,72 @@
         $pdf->SetFont('Arial', 'B', 16);
         
         //HEADER
-        $pdf->Cell(0, 10, 'IMAGE', 0, 1, 'C');
+        //$pdf->Image('./images/logo.jpg');
         
-        //titre
+        //TITRE
         $pdf->Cell(0, 10, 'REMBOURSEMENT DE FRAIS ENGAGES', 1, 1, 'C'); //titre du tableau
         
         
         //information sur visiteur et fiche
-        $pdf->SetFont('Arial', 'B', 14); //cahngement de taille de la police
+        $pdf->SetFont('Arial', 'B', 14); //changement de taille de la police
         $pdf->Ln();
-        $pdf->Cell(100, 10, utf8_decode('Visiteur :     '.$idVisiteur.'   -   '.$prenomVisiteur.' '.strtoupper($nomVisiteur)), 0, 1, 'C'); //affichage le visiteur
-        $pdf->Cell(75, 10, 'Mois :         '.$numMois.'/'.$numAnnee, 0, 1, 'C'); //affichage le mois
+        $pdf->Cell(TAILLE_PETIT, 10, 'Visiteur', 0, 0,'L');
+        $pdf->Cell(TAILLE_PETIT, 10, $idVisiteur, 0, 0,'L');
+        $pdf->Cell(TAILLE_PETIT, 10, utf8_decode($prenomVisiteur), 0, 0,'L');
+        $pdf->Cell(TAILLE_PETIT, 10, utf8_decode(strtoupper($nomVisiteur)), 0, 1,'L');
         
+        $pdf->Cell(TAILLE_PETIT, 10, 'Mois', 0, 0, 'L');
+        $pdf->Cell(TAILLE_PETIT, 10, $numMois.'/'.$numAnnee, 0, 0, 'L');
         
         //tableau frais forfait
-        $pdf->Ln();
-        $pdf->Cell(0, 10, utf8_decode('Frais Forfaitaires       Quantité        Montant Unitaire        Total'), 0, 1, 'C');
+        $pdf->Ln(20);
+        $pdf->Cell(TAILLE_PETIT, 10, 'Frais forfaitaires', 1, 0, 'C');
+        $pdf->Cell(TAILLE_PETIT, 10, utf8_decode('Quantité'), 1, 0, 'C');
+        $pdf->Cell(TAILLE_PETIT, 10, 'Montant Unitaire', 1, 0, 'C');
+        $pdf->Cell(TAILLE_PETIT, 10, 'Total', 1, 1, 'C');
         
         foreach ($lesFraisForfait as $fraisForfait) {
+            //stockage des valeurs dans variables (lisibilite)
             $libelle = $fraisForfait["libelle"];
             $quantite = $fraisForfait["quantite"];
             $montant = $fraisForfait["montant"];
             $total = $quantite * $montant;
             $montantTotal += $total;
             
-            $pdf->Cell(0, 10, utf8_decode($libelle.' '.$quantite.' '.$montant.' '.$total), 0, 1, 'C');
+            //affichage des lignes du tableau
+            $pdf->Cell(TAILLE_PETIT, 10, utf8_decode($libelle),1, 0, 'C');
+            $pdf->Cell(TAILLE_PETIT, 10, utf8_decode($quantite), 1, 0, 'C');
+            $pdf->Cell(TAILLE_PETIT, 10, utf8_decode($montant), 1, 0, 'C');
+            $pdf->Cell(TAILLE_PETIT, 10, utf8_decode($total), 1, 1    , 'C');
         }
         
         //tableau frais hors forfait
         $pdf->Ln();
-        $pdf->Cell(0, 10, 'Autre frais', 0, 1, 'C');
-        $pdf->Cell(0, 10, utf8_decode('Date       Libellé        Montant'), 0, 1, 'C');
+        $pdf->Cell(TAILLE_GRAND * 3, 10, 'Autre frais', 1, 1, 'C');
+        $pdf->Cell(TAILLE_PETIT, 10, 'Date', 1, 0, 'C');
+        $pdf->Cell(TAILLE_PETIT * 2, 10, utf8_decode('Libellé'), 1, 0, 'C');
+        $pdf->Cell(TAILLE_PETIT, 10, 'Montant', 1, 1, 'C');
         
         foreach($lesFraisHorsForfait as $fraisHorsForfait) {
+            //stockage des valeurs dans variables (lisibilite)
             $date = $fraisHorsForfait['date'];
             $libelle = $fraisHorsForfait['libelle'];
             $montant = $fraisHorsForfait['montant'];
             $montantTotal += $montant;
             
-            $pdf->Cell(0, 10, utf8_decode($date.' '.$libelle.' '.$montant), 0, 1, 'C');
+            //affichage des lignes du tableau
+            $pdf->Cell(45, 10, $date, 1, 0, 'C');
+            $pdf->Cell(TAILLE_PETIT * 2, 10, utf8_decode($libelle), 1, 0, 'C');
+            $pdf->Cell(TAILLE_PETIT, 10, $montant, 1, 1, 'C');
         }
         
         //prix total
         $pdf->Ln();
-        $pdf->Cell(0, 10, utf8_decode('Total '.$numMois.'/'.$numAnnee.' '.$montantTotal), 0, 1, 'R');
+        $pdf->Cell(TAILLE_PETIT * 2, 10, '', 0, 0, 'R');
+        $pdf->Cell(45, 10, 'Total '.$numMois.'/'.$numAnnee, 1, 0, 'R');
+        $pdf->Cell(45, 10, $montantTotal, 1, 1, 'R');
         
-        //fait a, le et zone signature
+        //fait a, le et zone pour la signature
         $pdf->Ln();
         $pdf->Cell(0, 10, utf8_decode('Fait à Cachan, le '.$aujourdhui), 0, 1, 'R');
         $pdf->Cell(0, 10, "Vu l'agent comptable", 0, 1, 'R');
