@@ -34,7 +34,7 @@
     <?php
             foreach (  $lesFraisForfait as $unFraisForfait  ) 
             {
-                if (!$unFraisForfait['libelle']=='Frais kilométrique'){
+                if ($unFraisForfait['libelle']!='Frais kilométrique'){
                 $quantite = $unFraisForfait['quantite'];
                 }
                 else {
