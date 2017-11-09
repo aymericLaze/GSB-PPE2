@@ -44,14 +44,6 @@ if ($nbFiche != 0){
                 
             </p>
         </div>
-        
-        <!-- pied de la page pour validation -->
-        <div class="piedForm">    
-            <p>
-                <input id="ok" type="submit" value="Valider" size="20" />
-            </p> 
-        </div>
-
     </form>
     
 <?php
