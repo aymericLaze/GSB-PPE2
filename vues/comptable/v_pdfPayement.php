@@ -46,7 +46,7 @@
         $pdf->SetFont('Arial', 'B', 16);
         
         //HEADER
-        //$pdf->Image('./images/logo.jpg');
+        $pdf->Image('./images/logo.jpg', 70);
         
         //TITRE
         $pdf->Cell(0, 10, 'REMBOURSEMENT DE FRAIS ENGAGES', 1, 1, 'C'); //titre du tableau
