@@ -109,7 +109,6 @@ switch ($action) {
         
         //recuperation des variables
         $lstFiche = $_REQUEST['lstFiche'];
-        
         //separation de l'id et de la date de la fiche
         $selection = explode('/', $lstFiche);
         $visiteurASelectionner = $selection[0];
@@ -136,7 +135,7 @@ switch ($action) {
         $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
         $nbFiche = count($lesFicheEnPayement);
         include("vues/comptable/v_selectionFichesEnPayement.php");
-
+        //
         $prixKm=intval($pdo->calculerKilometrique($visiteurASelectionner));
         //inclusion de la vue de la fiche a valider le payement
         include ("vues/comptable/v_afficherFichesEnPayement.php");
