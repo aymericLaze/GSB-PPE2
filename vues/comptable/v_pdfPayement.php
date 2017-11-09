@@ -30,6 +30,7 @@
         $montantTotal = 0;
         $dateDuJour = new DateTime();
         $aujourdhui = $dateDuJour->format('d/m/Y');
+        $nomMois = getMoisTextuelle($numMois);
         
         //recuperation classe fpdf
         require('lib/fpdf/fpdf.php');
@@ -60,7 +61,7 @@
         $pdf->Cell(TAILLE_PETIT, 10, utf8_decode(strtoupper($nomVisiteur)), 0, 1,'L');
         
         $pdf->Cell(TAILLE_PETIT, 10, 'Mois', 0, 0, 'L');
-        $pdf->Cell(TAILLE_PETIT, 10, $numMois.'/'.$numAnnee, 0, 0, 'L');
+        $pdf->Cell(TAILLE_PETIT, 10, $nomMois.' '.$numAnnee, 0, 0, 'L');
         
         //tableau frais forfait
         $pdf->Ln(20);
