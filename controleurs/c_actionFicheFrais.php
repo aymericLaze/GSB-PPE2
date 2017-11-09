@@ -7,7 +7,8 @@
  * appliquerModification : Applique les modifications de modifier
  * reporter : Report d'un frais hors forfait au mois dernier mois au statut CR
  * refuser : Refuse le frais hors forfait
- * validerRemboursement : modifie l'état de la fiche au statut RB
+ * pdf-payement : generation du pdf de remboursement
+ * validerFicheRemboursement : modifie l'état de la fiche au statut RB
  * 
  * @author MAINENTI Eugène
  * @author LAZE Aymeric
@@ -112,7 +113,7 @@ switch ($action) {
         //fonction refuserFraisHorsForfait
         $pdo->refuserFraisHorsForfait($idFraisHorsForfait);
         
-         //redirection
+        //redirection
         header('Location: index.php?uc=selectionnerFicheFrais&action=voirFicheFrais');
         break;
     }
@@ -134,6 +135,7 @@ switch ($action) {
         $numAnnee = substr($moisASelectionner, 0, 4);
         $numMois = substr($moisASelectionner, 4, 2);
         
+        //generation du pdf
         include ('vues/comptable/v_pdfPayement.php');
         creerPDF($visiteurASelectionner, $nomVisiteur, $prenomVisiteur, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois);
         
