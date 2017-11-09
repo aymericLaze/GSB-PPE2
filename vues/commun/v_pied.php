@@ -9,6 +9,7 @@
     }
 ?>
         <script>
+            //script pour selection affichage automatique apres selection dans une liste deroulante
             var selectElmt = document.getElementById("listMois");
             var valeurselectionnee = selectElmt.options[selectElmt.selectedIndex].value;
             var textselectionne = selectElmt.options[selectElmt.selectedIndex].text;
