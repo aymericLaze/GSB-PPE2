@@ -34,11 +34,13 @@
     <?php
             foreach (  $lesFraisForfait as $unFraisForfait  ) 
             {
-                if ($unFraisForfait['libelle']!='Frais kilométrique'){
+                if ($unFraisForfait['libelle']!='Frais Kilométrique'){
                 $quantite = $unFraisForfait['quantite'];
                 }
                 else {
-                $quantite = calculerFraisKilometrique($visiteurASelectionner,$unFraisForfait['quantite']);
+                $quantite = intval($unFraisForfait['quantite']);
+                $quantite=$quantite*$prixKm." €";
+                //$quantite+=" €";
                 }
     ?>
                 <td class="qteForfait"><?php echo $quantite?> </td>

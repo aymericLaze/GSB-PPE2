@@ -134,7 +134,8 @@ switch ($action) {
         $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
         $nbFiche = count($lesFicheEnPayement);
         include("vues/comptable/v_selectionFichesEnPayement.php");
-        
+
+        $prixKm=intval($pdo->calculerKilometrique($visiteurASelectionner));
         //inclusion de la vue de la fiche a valider le payement
         include ("vues/comptable/v_afficherFichesEnPayement.php");
         

@@ -470,16 +470,26 @@ class PdoGsb{
             
             return $lesInfoFichesEnPayement;
         }
-        
-        public function calculerFraisKilometrique($idVisiteur,$quantite){
-		$req = "select vehicule.prixAuKm"
-                        ."from vehicule join utilisateur on utilisateur.idVehicule=vehicule.id"
+        /**
+         * Retourne le prix en fonction du véhicule du visiteur
+         * 
+         * @param str $idVisiteur
+         * @param int $quantite
+         * @return int
+         * 
+         * @author : MAINENTI Eugène
+         */
+        public function calculerKilometrique($idVisiteur){
+		$req = "select vehicule.prixAuKm "
+                        ."from vehicule join utilisateur on utilisateur.idVehicule=vehicule.id "
                         ."where utilisateur.id='$idVisiteur'";
-		$ligne = PdoGsb::$monPdo->query($req);
-		$res = $ligne*$quantite;
-		return $res;
+		$res = PdoGsb::$monPdo->query($req);
+                $ligne=$res->fetch();
+		return $ligne;
+        }
+
 }
-}
+
 
 
 ?>
