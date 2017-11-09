@@ -20,7 +20,7 @@
      * 
      * @author LAZE Aymeric
      */
-    function creerPDF($idVisiteur, $nomVisiteur, $prenomVisiteur, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois) {
+    function creerPDF($idVisiteur, $nomVisiteur, $prenomVisiteur, $lesFraisHorsForfait, $lesFraisForfait, $numAnnee, $numMois) {
         
         //definition de constante
         define('TAILLE_PETIT', 45);
@@ -65,7 +65,7 @@
         
         //tableau frais forfait
         $pdf->Ln(20);
-        $pdf->Cell(TAILLE_PETIT, 10, 'Frais forfaitaires', 1, 0, 'C');
+        $pdf->Cell(TAILLE_PETIT, 10, 'Frais forfaitaires', 1, 0, 'L');
         $pdf->Cell(TAILLE_PETIT, 10, utf8_decode('Quantité'), 1, 0, 'C');
         $pdf->Cell(TAILLE_PETIT, 10, 'Montant Unitaire', 1, 0, 'C');
         $pdf->Cell(TAILLE_PETIT, 10, 'Total', 1, 1, 'C');
