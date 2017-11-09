@@ -12,8 +12,9 @@
 
             <p>
 
-                <label for="lstVisiteur" accesskey="n">Mois : </label>
-                <select id="listVisiteur" name="lstVisiteur">
+                <label for="lstVisiteur" accesskey="n">Visiteur : </label>
+                <select id="listVisiteur" name="lstVisiteur" onChange = "submit();">
+                    <option selected value=0>Choisir un visiteur</option>
                     <?php
                     foreach ($lesVisiteurs as $unVisiteur) {
                         $idVisiteur = $unVisiteur['idVisiteur'];
@@ -34,12 +35,12 @@
                 </select>
             </p>
         </div>
-        <div class="piedForm">    
+        <!-- <div class="piedForm">    
             <p>
                 <input id="ok" type="submit" value="Valider" size="20" />
                 <input id="annuler" type="reset" value="Effacer" size="20" />
             </p> 
         </div>
-
+        -->
     </form>
 

@@ -11,13 +11,14 @@ if ($nbMois!=0){
 <div id="contenu">
     <h2>Fiches de frais</h2>
     <h3>Mois à sélectionner : </h3>
-    <form action="index.php?uc=selectionnerFicheFrais&action=choisirVisiteur" method="post">
+    <form action="index.php?uc=selectionnerFicheFrais&action=choisirVisiteur" method="post" >
         <div class="corpsForm">
 
             <p>
 
                 <label for="lstMois" accesskey="n">Mois : </label>
-                <select id="listMois" name="lstMois">
+                <select id="listMois" name="lstMois" onChange = "submit();">
+                    <option selected value=0>Choisir un mois</option>
                     <?php
                     foreach ($lesMois as $unMois) {
                         $mois = $unMois['mois'];
@@ -38,13 +39,14 @@ if ($nbMois!=0){
                 </select>
             </p>
         </div>
+        <!--
         <div class="piedForm">    
             <p>
                 <input id="ok" type="submit" value="Valider" size="20" />
                 <input id="annuler" type="reset" value="Effacer" size="20" />
             </p> 
         </div>
-
+        -->
     </form>
 <?php
 }
