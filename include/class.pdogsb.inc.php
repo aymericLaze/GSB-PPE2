@@ -471,6 +471,14 @@ class PdoGsb{
             return $lesInfoFichesEnPayement;
         }
         
+        public function calculerFraisKilometrique($idVisiteur,$quantite){
+		$req = "select vehicule.prixAuKm"
+                        ."from vehicule join utilisateur on utilisateur.idVehicule=vehicule.id"
+                        ."where utilisateur.id='$idVisiteur'";
+		$ligne = PdoGsb::$monPdo->query($req);
+		$res = $ligne*$quantite;
+		return $res;
+}
 }
 
 
