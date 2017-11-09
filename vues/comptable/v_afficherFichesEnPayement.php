@@ -40,7 +40,7 @@
                 else {
                 $quantite = intval($unFraisForfait['quantite']);
                 $quantite=$quantite*$prixKm." €";
-                //$quantite+=" €";
+                
                 }
     ?>
                 <td class="qteForfait"><?php echo $quantite?> </td>

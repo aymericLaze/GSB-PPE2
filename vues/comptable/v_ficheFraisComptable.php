@@ -36,7 +36,14 @@
     <?php
             foreach (  $lesFraisForfait as $unFraisForfait  ) 
             {
+                if ($unFraisForfait['libelle']!='Frais Kilométrique'){
                 $quantite = $unFraisForfait['quantite'];
+                }
+                else {
+                $quantite = intval($unFraisForfait['quantite']);
+                $quantite=$quantite*$prixKm." €";
+                
+                }
     ?>
                 <td class="qteForfait"><?php echo $quantite?> </td>
     <?php

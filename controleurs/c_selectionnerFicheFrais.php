@@ -89,6 +89,7 @@ switch ($action) {
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
         
+        $prixKm=intval($pdo->calculerKilometrique($visiteurASelectionner));
         include("vues/comptable/v_ficheFraisComptable.php");
         break;
     }
@@ -97,6 +98,7 @@ switch ($action) {
         //recuperation des infos
         $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
         $nbFiche = count($lesFicheEnPayement);
+        
         
         //inclusion de la vue de selection
         include("vues/comptable/v_selectionFichesEnPayement.php");
