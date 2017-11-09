@@ -137,7 +137,7 @@ switch ($action) {
         
         //generation du pdf
         include ('vues/comptable/v_pdfPayement.php');
-        creerPDF($visiteurASelectionner, $nomVisiteur, $prenomVisiteur, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois);
+        creerPDF($visiteurASelectionner, $nomVisiteur, $prenomVisiteur, $lesFraisHorsForfait, $lesFraisForfait, $numAnnee, $numMois);
         
         break;
     }
