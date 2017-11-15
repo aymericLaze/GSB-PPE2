@@ -15,7 +15,7 @@
  * @link       http://www.php.net/manual/fr/book.pdo.php
  */
 
-class PdoGsb{   		
+class PdoGsb {   		
       	private static $serveur='mysql:host=localhost';
       	private static $bdd='dbname=gsb_frais';   		
       	private static $user='root' ;    		
@@ -329,8 +329,11 @@ class PdoGsb{
 		}
 		return $lesMois;
 	}
-        
-        
+
+
+//METHODES CREE LORS DES MISSIONS ========================================================================= 
+
+
 /**
  *  Récupère la liste des visiteurs qui ont des fiches de frais à valider pour le mois donnée en paramètre
  * 
@@ -361,11 +364,7 @@ class PdoGsb{
 		}
 		return $lesVisiteurs;
                     
-        }
-        
-        
-//METHODES CREE LORS DES MISSIONS ========================================================================= 
-        
+        }        
         
 /**
  * Récupère le libelle d'un frais hors forfait et lui rajoute [REFUSE] devant
