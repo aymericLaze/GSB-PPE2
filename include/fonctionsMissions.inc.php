@@ -70,7 +70,24 @@ function getMoisTextuelle($numMois) {
     return $listMois[$numMois];
 }
 
-
+/**
+ * recuperation des infos de la fiche selectionner
+ * 
+ * supppression de redondance dans le code, pour gain de temps, avec une fonction
+ * unique et passage de certains parametres par reference pour retourner plusieurs
+ * resultats
+ * 
+ * @param str $visiteur
+ * @param str $mois
+ * @param array $fraisHorsForfait
+ * @param array $fraisForfait
+ * @param array $infosFiche
+ * @param int $numAnnee
+ * @param int $numMois
+ * @param Pdogsb $pdo
+ * 
+ * @author LAZE Aymeric
+ */
 function getLaFiche($visiteur, $mois, &$fraisHorsForfait, &$fraisForfait, &$infosFiche, &$numAnnee, &$numMois, &$pdo) {
     $fraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteur, $mois);
     $fraisForfait = $pdo->getLesFraisForfait($visiteur, $mois);
