@@ -70,4 +70,12 @@ function getMoisTextuelle($numMois) {
     return $listMois[$numMois];
 }
 
+
+function getLaFiche($visiteur, $mois, &$fraisHorsForfait, &$fraisForfait, &$infosFiche, &$numAnnee, &$numMois, &$pdo) {
+    $fraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteur, $mois);
+    $fraisForfait = $pdo->getLesFraisForfait($visiteur, $mois);
+    $infosFiche = $pdo->getLesInfosFicheFrais($visiteur, $mois);
+    $numAnnee = substr($mois, 0, 4);
+    $numMois = substr($mois, 4, 2);
+}
 ?>
