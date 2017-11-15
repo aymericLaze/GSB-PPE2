@@ -129,11 +129,7 @@ switch ($action) {
         $prenomVisiteur = $infosVisiteur['prenom'];
         
         //recuperation des infos de la fiche de frais
-        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteurASelectionner, $moisASelectionner);
-        $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
-        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($visiteurASelectionner, $moisASelectionner);
-        $numAnnee = substr($moisASelectionner, 0, 4);
-        $numMois = substr($moisASelectionner, 4, 2);
+        getLaFiche($visiteurASelectionner, $moisASelectionner, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois, $pdo);
         
         //generation du pdf
         include ('include/pdfFraisEnPayement.inc.php');

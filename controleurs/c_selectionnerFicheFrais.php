@@ -78,19 +78,15 @@ switch ($action) {
         include("vues/comptable/v_listeVisiteur.php");
 
         //affichage de la fiche de frais
-        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteurASelectionner, $moisASelectionner);
-        $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
-        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($visiteurASelectionner, $moisASelectionner);
-        $numAnnee = substr($moisASelectionner, 0, 4);
-        $numMois = substr($moisASelectionner, 4, 2);
+        getLaFiche($visiteurASelectionner, $moisASelectionner, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois, $pdo);
         $libEtat = $lesInfosFicheFrais['libEtat'];
         $montantValide = $lesInfosFicheFrais['montantValide'];
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
-        
         $prixKm=intval($pdo->calculerKilometrique($visiteurASelectionner));
         include("vues/comptable/v_ficheFraisComptable.php");
+        
         break;
     }
     case 'choisirFicheSuiviPayement':{
@@ -120,11 +116,7 @@ switch ($action) {
         $prenomVisiteur = $infosVisiteur['prenom'];
         
         //recuperation des infos de la fiche de frais
-        $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($visiteurASelectionner, $moisASelectionner);
-        $lesFraisForfait = $pdo->getLesFraisForfait($visiteurASelectionner, $moisASelectionner);
-        $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($visiteurASelectionner, $moisASelectionner);
-        $numAnnee = substr($moisASelectionner, 0, 4);
-        $numMois = substr($moisASelectionner, 4, 2);
+        getLaFiche($visiteurASelectionner, $moisASelectionner, $lesFraisHorsForfait, $lesFraisForfait, $lesInfosFicheFrais, $numAnnee, $numMois, $pdo);
         $libEtat = $lesInfosFicheFrais['libEtat'];
         $montantValide = $lesInfosFicheFrais['montantValide'];
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
