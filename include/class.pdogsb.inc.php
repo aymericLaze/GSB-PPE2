@@ -364,7 +364,7 @@ class PdoGsb{
         }
         
         
-        
+//METHODES CREE LORS DES MISSIONS ========================================================================= 
         
         
 /**
@@ -470,15 +470,16 @@ class PdoGsb{
             
             return $lesInfoFichesEnPayement;
         }
-        /**
-         * Retourne le prix en fonction du véhicule du visiteur
-         * 
-         * @param str $idVisiteur
-         * @param int $quantite
-         * @return int
-         * 
-         * @author : MAINENTI Eugène
-         */
+        
+/**
+* Retourne le prix en fonction du véhicule du visiteur
+* 
+* @param str $idVisiteur
+* @param int $quantite
+* @return int
+* 
+* @author : MAINENTI Eugène
+*/
         public function calculerKilometrique($idVisiteur){
 		$req = "select vehicule.prixAuKm "
                         ."from vehicule join utilisateur on utilisateur.idVehicule=vehicule.id "
@@ -489,7 +490,5 @@ class PdoGsb{
         }
 
 }
-
-
 
 ?>
