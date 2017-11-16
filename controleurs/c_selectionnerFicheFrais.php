@@ -110,6 +110,11 @@ switch ($action) {
         $visiteurASelectionner = $selection[0];
         $moisASelectionner = $selection[1];
         
+        //inclusion de la vue de selection
+        $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
+        $nbFiche = count($lesFicheEnPayement);
+        include("vues/comptable/v_selectionFichesEnPayement.php");
+        
         //récupération du nom et prénom du visiteur correspondant
         $infosVisiteur = $pdo->getNomPrenomVisiteur($visiteurASelectionner);
         $nomVisiteur = $infosVisiteur['nom'];
@@ -122,13 +127,11 @@ switch ($action) {
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
         $dateModif = $lesInfosFicheFrais['dateModif'];
         $dateModif = dateAnglaisVersFrancais($dateModif);
+
+        //calcul du frais km
+        $calculKm = $pdo->calculerKilometrique($visiteurASelectionner);
+        $prixKm=intval($calculKm);
         
-        //inclusion de la vue de selection
-        $lesFicheEnPayement = $pdo->getInfoFichesEnPayement();
-        $nbFiche = count($lesFicheEnPayement);
-        include("vues/comptable/v_selectionFichesEnPayement.php");
-        //
-        $prixKm=intval($pdo->calculerKilometrique($visiteurASelectionner));
         //inclusion de la vue de la fiche a valider le payement
         include ("vues/comptable/v_afficherFichesEnPayement.php");
         
