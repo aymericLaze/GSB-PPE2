@@ -12,7 +12,7 @@ switch($action){
 		$login = $_REQUEST['login'];
 		$mdp = $_REQUEST['mdp'];
                 //chiffrage du mot de passe
-                $mdp = hash("sha512", $mdp);
+                //$mdp = hash("sha512", $mdp);
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
 		if(!is_array( $visiteur)){
 			ajouterErreur("Login ou mot de passe incorrect");
